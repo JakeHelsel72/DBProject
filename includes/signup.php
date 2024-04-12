@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         require_once("database.php");
         require_once("signup_model.php");
         require_once("signup_controller.php");
-
+        
         // check to see if input is full
         $errors = [];
 
