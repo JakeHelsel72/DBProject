@@ -45,7 +45,7 @@ require_once("includes/config_session.php");
         </div>
 
         <div class="right">
-            <img class="intro_img" src="./Assests/intro.png" alt="">
+            <img class="intro_img" src="./WebDisplay/Assests/intro.png" alt="">
         </div>
     </div>
   </body>
