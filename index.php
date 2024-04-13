@@ -53,6 +53,11 @@ require_once("includes/login_view.php");
           Don't have an account?
           <a href="#" onclick="toggleForms('signup');">SignUp</a>
         </div>
+        <?php
+        check_login_errors();
+        ?>
+        
+
       </form>
 
       <!-- SignUp Form (initially hidden) -->
@@ -70,14 +75,12 @@ require_once("includes/login_view.php");
           Already have an account?
           <a href="#" onclick="toggleForms('login');">Login</a>
         </div>
+        <?php
+        check_signup_errors();
+        ?>
       </form>
     </div>
   <?php }
-
-  // Display login and sign-up form errors
-  check_login_errors();
-  check_signup_errors();
-
   // Check if user is logged in
   if (isset($_SESSION["user_id"])) { ?>
     <!-- Display logout form for logged-in user -->
