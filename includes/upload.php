@@ -1,6 +1,7 @@
 <?php
 if (isset($_POST['submit'])) 
 {
+    require_once("database.php");
     $file = $_FILES["image"];
     //print_r($file);
     $fileName = $_FILES["image"]['name'];
@@ -18,10 +19,26 @@ if (isset($_POST['submit']))
         if ($fileError == 0) {
             if ($fileSize < 500000) // file less than 500mB
             { 
-                $fileNameNew = uniqid('', true) . "." . $fileActualExt;
-                $fileDestination = '../upload/' . $fileNameNew; // file directory for images
+                // Insert post data into database
+                $query = "INSERT INTO post (UID, Title, Description, Link) VALUES (:userid, :title, :description, :link)";
+                $stmt = $pdo->prepare($query);
+                $stmt->bindParam(':userid', $_SESSION['user_id']);
+                $stmt->bindParam(':title', $title);
+                $stmt->bindParam(':description', $description);
+                $stmt->bindParam(':link', $link);
+                $stmt->execute();
+
+                // Get the auto-incremented post ID
+                $postId = $pdo->lastInsertId();
+
+                // Rename and move uploaded file to destination directory
+                $fileNameNew = $postId . '.' . $fileActualExt;
+                $fileDestination = '../upload/' . $fileNameNew;
                 move_uploaded_file($fileTempName, $fileDestination);
+
+                // Redirect with success message
                 header("Location: ../index.php?uploadsuccess");
+                exit();
             } else {
                 echo "File over 500mB";
             }

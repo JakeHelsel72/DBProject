@@ -12,6 +12,8 @@ require_once("includes/config_session.php");
     <link rel="stylesheet" href="post.css">
   </head>
   <body>
+  <?php
+  if (!isset($_SESSION["user_id"])) { ?>
     <nav class="row">
         <img src="./WebDisplay/Assests/Logo.png" class="logo_img" alt="">
         <ul class="nav_links">
@@ -20,6 +22,11 @@ require_once("includes/config_session.php");
             <li class="link">UserName</li>
         </ul>
     </nav>
+    <?php
+  } else { ?>
+    <p> Login to make a post! </p>
+<?php
+  }?>
     <div class="main">
         <img class="post-img" src="./WebDisplay/Assests/Post.png" alt="Image by vectorjuice on Freepik">
         <div class="upload">

@@ -9,8 +9,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
     try {
         require_once("database.php");
-        require_once("signup_model.php");
-        require_once("signup_controller.php");
+        require_once("login_model.php");
+        require_once("login_controller.php");
 
         // check to see if input is full
         $errors = [];
@@ -18,8 +18,14 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         if (is_input_empty($username, $password)){
             $errors["empty_input"] = "Ensure all fields are filled in.";
         }
-        if (is_username_taken($pdo, $username)){
-            $errors["username_taken"] = "Username taken.";
+
+        $result = get_user($pdo, $username);
+        //print_r();
+        if (is_username_wrong($result)){
+            $errors["login_incorrect"] = "Incorrect login information.";
+        }
+        if (!is_username_wrong($result) and is_password_wrong($password, $result['Password'])){
+            $errors["login_incorrect"] = "Incorrect login information.";
         }
         require_once("config_session.php");
 
@@ -28,21 +34,20 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             header("Location: ../index.php");
             die();
         }
-        $query = "INSERT INTO users (Username, Password) VALUES (:username, :password)";
-        $stmt = $pdo->prepare($query);
-        $stmt->bindParam(":username", $username);
-        $stmt->bindParam(":password", $hashedPassword); // Store hashed password
-        $stmt->execute();
 
-        if ($stmt->rowCount() > 0) {
-            // Registration successful
-            header("Location: ../index.php?registration=success");
-            exit();
-        } else {
-            // Registration failed
-            header("Location: ../index.php?registration=failed");
-            exit();
-        }
+        $newSessionId = session_create_id();
+        $sessionId = $newSessionId . "_" . $result["UserID"];
+        session_id($sessionId);
+
+        $_SESSION["user_id"] = $result["UserID"];
+        $_SESSION["user_username"] = htmlspecialchars($result["Username"]); // sanitize input for XSS
+        $_SESSION["last_regen"] = time(); 
+        //print_r($result);
+        header("Location: ../index.php?login=success");
+        $pdo = null;
+        $stmt = null;
+
+        die();
     } catch (PDOException $e) {
         die("Query failed: " . $e->getMessage());
     }
