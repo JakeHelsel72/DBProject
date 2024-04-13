@@ -32,6 +32,12 @@ require_once("includes/login_view.php");
 </head>
 
 <body>
+  <nav class="row">
+    <img src="./Assests/Logo.png" class="logo_img" alt="">
+    <ul class="nav_links">
+        <li class="link link__hover-effect">Experience Blast</li>
+    </ul>
+  </nav>
   <?php
   output_username();
 
