@@ -1,0 +1,114 @@
+
+*{
+    background-color: rgb(0, 0, 0);
+    color: white;
+    --Primary--: #9eded3;
+    --Secondary--: #ff47f9;
+    --Accent---: #ffb100;
+    box-sizing: border-box;
+}
+
+
+.row{
+    max-width:1200px;
+    margin: auto;
+}
+
+ul{
+    list-style: none;
+}
+
+
+button{
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 20px;
+    border: none;
+    color: black;
+    background-color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+h1,h4{
+    margin: 0px;
+    background-color: transparent;
+}
+
+/* NAV BAR */
+
+
+nav{
+    display: flex;
+    margin: auto;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+
+}
+
+.logo_img{
+    min-width: 100px;
+    max-width: 150px ;
+}
+
+.nav_links{
+    display: flex;
+}
+
+.link{
+    padding: 10px 20px;
+    font-weight: bold;
+    font-family: "Pixelify Sans", sans-serif;
+}
+
+
+.btn{
+    color: black;
+    background-color: var(--Secondary--);
+    border-radius: 5px;
+    margin: 0 10px;
+}
+
+/* 
+
+POST SECTION
+
+*/
+.main{
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    width: 100vw;
+    height: calc(100vh - 150px);
+    padding: 50px 20px;
+    color: black;
+}
+
+.upload{
+    width: 40vw;
+    text-align: center;
+    margin: auto;
+    padding:30px 0px;
+    border-radius: 10px;
+}
+
+
+.post-img{
+    width: 40vw;
+    border-radius: 10px;
+}
+
+.title{
+    margin: 50px 0px;
+}
+.input{
+    width: 300px;
+    height: 60px;
+    margin: 10px;
+    padding-left: 10px;
+    border-radius: 10px;
+    font-size: 18px;
+
+}
+
