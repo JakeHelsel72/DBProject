@@ -26,12 +26,13 @@ if (isset($_POST['submit']))
             if ($fileSize < 500000) // file less than 500mB
             { 
                 // Insert post data into database
-                $query = "INSERT INTO post (UID, Title, Description, Link) VALUES (:userid, :title, :description, :link)";
+                $query = "INSERT INTO post (UID, Title, Description, Link, FileExt) VALUES (:userid, :title, :description, :link, :fileext)";
                 $stmt = $pdo->prepare($query);
                 $stmt->bindParam(':userid', $_SESSION['user_id']);
                 $stmt->bindParam(':title', $title);
                 $stmt->bindParam(':description', $description);
                 $stmt->bindParam(':link', $link);
+                $stmt->bindParam(':fileext', $fileActualExt);
                 $stmt->execute();
 
                 // Get the auto-incremented post ID
