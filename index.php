@@ -60,7 +60,7 @@ require_once("includes/login_view.php");
           <a href="#" onclick="toggleForms('signup');">SignUp</a>
         </div>
         <?php
-        check_login_errors();
+        check_signup_errors();
         ?>
         
 
@@ -82,7 +82,8 @@ require_once("includes/login_view.php");
           <a href="#" onclick="toggleForms('login');">Login</a>
         </div>
         <?php
-        check_signup_errors();
+        check_login_errors();
+        
         ?>
       </form>
     </div>

@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 
 function findFileExtensionByPostID(object $pdo, int $postId){
     $query = "SELECT FileExt FROM post WHERE PostID = :postid;";

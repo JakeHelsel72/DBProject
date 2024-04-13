@@ -25,13 +25,11 @@ require_once("includes/postviewerutil.php");
             <li class="link">UserName</li>
         </ul>
     </nav>
-    <?php
-  } else { ?>
-    <p> Login to make a post! </p>
-<?php
-  }?>
+    <p> <?php $postId . findFileExtensionByPostID($pdo, $postId);?> </p>
+
+
     <div class="main">
-        <img class="post-img" src="/upload/<?php $postId . findFileExtensionByPostID($postId)>" alt="Image by vectorjuice on Freepik">
+        <img class="post-img" src="/upload/<?php $postId . findFileExtensionByPostID($pdo, $postId);?>" alt="Image by vectorjuice on Freepik">
         <div class="upload">
             <h1 class="title">Upload your own experiences!</h1>
             <form action = "includes/upload.php" method="POST" enctype="multipart/form-data">
@@ -48,4 +46,5 @@ require_once("includes/postviewerutil.php");
 
     </div>
   </body>
+    <?php }?>
 </html>
