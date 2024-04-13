@@ -33,9 +33,9 @@ require_once("includes/login_view.php");
 
 <body>
   <nav class="row">
-    <img src="./Assests/Logo.png" class="logo_img" alt="">
+    <img src="./WebDisplay/Assests/Logo.png" class="logo_img" alt="">
     <ul class="nav_links">
-        <li class="link link__hover-effect">Experience Blast</li>
+        <li class="link link__hover-effect">Browser Blast</li>
     </ul>
   </nav>
   <?php
