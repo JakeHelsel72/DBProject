@@ -2,7 +2,8 @@
 require_once("includes/database.php");
 require_once("includes/config_session.php");
 require_once("includes/postviewerutil.php");
-
+$postId = 1;
+$teststr = "test";
 ?>
 
 <!DOCTYPE html>
@@ -11,40 +12,27 @@ require_once("includes/postviewerutil.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><?php $postId ?></title>
+    <title><?php echo $teststr ?></title>
     <link rel="stylesheet" href="post.css">
   </head>
   <body>
   <?php
-  if (!isset($postId)) { ?>
-    <nav class="row">
-        <img src="./WebDisplay/Assests/Logo.png" class="logo_img" alt="">
-        <ul class="nav_links">
-            <li class="link">Your Experience</li>
-            <li class="link">Favorite</li>
-            <li class="link">UserName</li>
-        </ul>
-    </nav>
-    <p> <?php $postId . findFileExtensionByPostID($pdo, $postId);?> </p>
-
-
-    <div class="main">
-        <img class="post-img" src="/upload/<?php $postId . findFileExtensionByPostID($pdo, $postId);?>" alt="Image by vectorjuice on Freepik">
-        <div class="upload">
-            <h1 class="title">Upload your own experiences!</h1>
-            <form action = "includes/upload.php" method="POST" enctype="multipart/form-data">
-                <input class="input" type="text" name="title" placeholder="Post Title"> <br>
-                <input class="input" type="text" name="description" placeholder="Description"> <br>
-                <input class="input" type="text" name="link" placeholder="Relevant Link"> <br>
-                <input class="input" type="file" name="image"> <br>
-                <button type="submit" name="submit">UPLOAD</button>
-            </form>
-        </div>
+        output_username();
+    ?>
+  <?php
+  if (isset($postId)) { ?>
+    <p> <?php echo $postId ?><?php ?> </p>
+    <img class="post-img" src="./upload/<?php echo $postId .".". findFileExtensionByPostID($pdo, $postId); ?>" alt="FILL IN">
+    <p> <?php echo findTitleByPostID($pdo, $postId); ?><?php ?> </p>
+    <p> <?php echo findUsernameByPostID($pdo, $postId); ?><?php ?> </p>
+    <p> <?php echo findDescriptionByPostID($pdo, $postId); ?><?php ?> </p>
+    <p> <?php echo findLinkByPostID($pdo, $postId); ?><?php ?> </p>
 
     </div>
-    <div class="post-list">
-
-    </div>
+    <?php } else { ?>
+        <p> postId unset </p>
+    <?php } ?>
   </body>
-    <?php }?>
+    
+
 </html>
