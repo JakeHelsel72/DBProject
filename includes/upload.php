@@ -1,9 +1,15 @@
 <?php
 if (isset($_POST['submit'])) 
 {
-    require_once("database.php");
+    require_once("database.php"); // get pdo
+    require_once("config_session.php"); // get session data
+    //grab form stuff
+    $title = $_POST['title'];
+    $description = $_POST['description'];
+    $link = $_POST['link'];
     $file = $_FILES["image"];
-    //print_r($file);
+    //print_r($file); // debug line
+    // file attributes for error checking (do we want to keep the file)
     $fileName = $_FILES["image"]['name'];
     $fileTempName = $_FILES["image"]['tmp_name'];
     $fileSize = $_FILES["image"]['size'];
@@ -32,9 +38,9 @@ if (isset($_POST['submit']))
                 $postId = $pdo->lastInsertId();
 
                 // Rename and move uploaded file to destination directory
-                $fileNameNew = $postId . '.' . $fileActualExt;
-                $fileDestination = '../upload/' . $fileNameNew;
-                move_uploaded_file($fileTempName, $fileDestination);
+                $fileNameNew = $postId . '.' . $fileActualExt; //'postid.fileextension'
+                $fileDestination = '../upload/' . $fileNameNew; 
+                move_uploaded_file($fileTempName, $fileDestination);// place ^ into upload folder
 
                 // Redirect with success message
                 header("Location: ../index.php?uploadsuccess");
