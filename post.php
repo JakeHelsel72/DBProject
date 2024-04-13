@@ -13,7 +13,7 @@ require_once("includes/config_session.php");
   </head>
   <body>
     <nav class="row">
-        <img src="./Assests/Logo.png" class="logo_img" alt="">
+        <img src="./WebDisplay/Assests/Logo.png" class="logo_img" alt="">
         <ul class="nav_links">
             <li class="link">Your Experience</li>
             <li class="link">Favorite</li>
@@ -21,7 +21,7 @@ require_once("includes/config_session.php");
         </ul>
     </nav>
     <div class="main">
-        <img class="post-img" src="/WebDisplay/Assests/Post.png" alt="Image by vectorjuice on Freepik">
+        <img class="post-img" src="./WebDisplay/Assests/Post.png" alt="Image by vectorjuice on Freepik">
         <div class="upload">
             <h1 class="title">Upload your own experiences!</h1>
             <form action = "includes/upload.php" method="POST" enctype="multipart/form-data">

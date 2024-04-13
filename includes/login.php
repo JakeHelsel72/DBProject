@@ -28,7 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             header("Location: ../index.php");
             die();
         }
-        yoyoyo
         $query = "INSERT INTO users (Username, Password) VALUES (:username, :password)";
         $stmt = $pdo->prepare($query);
         $stmt->bindParam(":username", $username);
