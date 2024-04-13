@@ -13,16 +13,6 @@ require_once("includes/config_session.php");
   </head>
   <body>
 
-  <?php
-  // Assume $postid is the variable containing the post ID
-  $postid = 1; // Example post ID, replace with your actual post ID
-
-  // Build the URL with the query parameter
-  http://localhost:8080/DBProject/index.php?uploadsuccess
-  $url = "http://$_SERVER[HTTP_HOST]" . "/DBProject/experience.php?postid=" . $postid; 
-    $currentURL = $_SERVER['REQUEST_URI'];
-    echo "Current URL: http://$_SERVER[HTTP_HOST]". " and " . "$currentURL";
-  ?>
 
   <!-- Create a link (anchor tag) with the dynamic URL -->
     

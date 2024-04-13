@@ -2,7 +2,7 @@
 require_once("includes/database.php");
 require_once("includes/config_session.php");
 require_once("includes/postviewerutil.php");
-$postId = 1;
+$postId = $_GET['postId'];
 $teststr = "test";
 ?>
 
