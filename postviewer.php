@@ -56,6 +56,86 @@ if (strpos($link, 'http://') === 0 || strpos($link, 'https://') === 0) {
     <?php } else { ?>
         <p> postId unset </p>
     <?php } ?>
+
+
+<div class="feature">
+        <h1 class="title feature-title">Feature Experience</h1>
+        <div class="feature-lists">
+            <div class="feature-card">
+                <img class="card-img" src="/WebDisplay/Assests/Game1.png" alt="">
+                <div class="card-info">
+                    <h4 class="title-card">Game name</h4>
+                    <div class="player_num">Player: 2o</div>
+                    <div class="description">Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, soluta.</div>
+                    <div class="weblink">Link to game</div>
+                </div>
+            </div>
+            <div class="feature-card">
+                <img class="card-img" src="/WebDisplay/Assests/Game2.png" alt="">
+                <div class="card-info">
+                    <h4 class="title-card">Title experience</h4>
+                    <div class="player_num">Player: 2</div>
+                    <div class="description">Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, soluta.</div>
+                    <div class="weblink">Link to game</div>
+                </div>
+            </div>
+            <div class="feature-card">
+                <img class="card-img" src="/WebDisplay/Assests/Game3.png" alt="">
+                <div class="card-info">
+                    <h4 class="title-card">Game name</h4>
+                    <div class="player_num">Player: 5</div>
+                    <div class="description">Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, soluta.</div>
+                    <div class="weblink">Link to game</div>
+                </div>
+            </div>
+            <div class="feature-card">
+                <img class="card-img" src="/WebDisplay/Assests/Game4.png" alt="">
+                <div class="card-info">
+                    <h4 class="title-card">Game name</h4>
+                    <div class="player_num">Player: Solo</div>
+                    <div class="description">Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, soluta.</div>
+                    <div class="weblink">Link to game</div>
+                </div>
+            </div>
+            <div class="feature-card">
+                <img class="card-img" src="/WebDisplay/Assests/Game5.png" alt="">
+                <div class="card-info">
+                    <h4 class="title-card">Game name</h4>
+                    <div class="player_num">Player: Solo</div>
+                    <div class="description">Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, soluta.</div>
+                    <div class="weblink">Link to game</div>
+                </div>
+            </div>
+            <div class="feature-card">
+                <img class="card-img" src="/WebDisplay/Assests/Game6.png" alt="">
+                <div class="card-info">
+                    <h4 class="title-card">Game name</h4>
+                    <div class="player_num">Player: 3</div>
+                    <div class="description">Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, soluta.</div>
+                    <div class="weblink">Link to game</div>
+                </div>
+            </div>
+            <div class="feature-card">
+                <img class="card-img" src="/WebDisplay/Assests/Game7.png" alt="">
+                <div class="card-info">
+                    <h4 class="title-card">Game name</h4>
+                    <div class="player_num">Solo</div>
+                    <div class="description">Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, soluta.</div>
+                    <div class="weblink">Link to game</div>
+                </div>
+            </div>
+            <div class="feature-card">
+                <img class="card-img" src="/WebDisplay/Assests/Game8.png" alt="">
+                <div class="card-info">
+                    <h4 class="title-card">Game name</h4>
+                    <div class="player_num">Solo</div>
+                    <div class="description">Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, soluta.</div>
+                    <div class="weblink">Link to game</div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
   </body>
     
 
