@@ -30,6 +30,7 @@ require_once("includes/config_session.php");
     <div class="main">
         <img class="post-img" src="./WebDisplay/Assests/Post.png" alt="Image by vectorjuice on Freepik">
         <div class="upload">
+        <?php if (isset($_SESSION["user_id"])) { ?>
             <h1 class="title">Upload your own experiences!</h1>
             <form action = "includes/upload.php" method="POST" enctype="multipart/form-data">
                 <input class="input" type="text" name="title" placeholder="Post Title"> <br>
@@ -37,7 +38,11 @@ require_once("includes/config_session.php");
                 <input class="input" type="text" name="link" placeholder="Relevant Link"> <br>
                 <input class="input" type="file" name="image"> <br>
                 <button type="submit" name="submit">UPLOAD</button>
+          
             </form>
+            <?php } else { ?>
+              <h1 class="title">User must be logged in to upload an Experience!</h1>
+            <?php } ?>
         </div>
 
     </div>

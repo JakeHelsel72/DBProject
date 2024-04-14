@@ -7,6 +7,14 @@ $title = findTitleByPostID($pdo, $postId);
 $username = findUsernameByPostID($pdo, $postId); // this is posting user
 $description = findDescriptionByPostID($pdo, $postId);
 $link = findLinkByPostID($pdo, $postId);
+// Check if $link is an external URL or a relative path
+if (strpos($link, 'http://') === 0 || strpos($link, 'https://') === 0) {
+    // $link is already a full URL, use it directly
+    $finalLink = $link;
+} else {
+    // $link is a relative path, prepend http:// to make it a valid URL
+    $finalLink = "http://$link";
+}
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +37,8 @@ $link = findLinkByPostID($pdo, $postId);
     <p> <?php echo  $username?> </p>
     <p> <?php echo  $title?> </p>
     <p> <?php echo  $description?> </p>
-    <p> <?php echo  $link?> </p>
+    <a href="<?php echo $finalLink; ?>"><?php echo $link; ?></a>
+
 
     </div>
     <?php } else { ?>
