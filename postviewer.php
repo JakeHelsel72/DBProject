@@ -30,16 +30,28 @@ if (strpos($link, 'http://') === 0 || strpos($link, 'https://') === 0) {
   output_username(); // this is the viewing user
   ?>
   <body>
+    <nav class="row">
+        <img src="./WebDisplay/Assests/Logo.png" class="logo_img" alt="">
+        <ul class="nav_links">
+            <li class="link link__hover-effect">Experience</li>
+            <li class="link link__hover-effect">Favorite</li>
+            <li class="link btn">Sign In</li>
+        </ul>
+    </nav>
+  <?php
+        output_username();
+    ?>
   <?php
   if (isset($postId)) { ?>
-    <p> <?php echo $postId ?> </p>
-    <img class="post-img" src="./upload/<?php echo $postId .".". findFileExtensionByPostID($pdo, $postId); ?>" alt="FILL IN">
-    <p> <?php echo  $username?> </p>
-    <p> <?php echo  $title?> </p>
-    <p> <?php echo  $description?> </p>
-    <a href="<?php echo $finalLink; ?>"><?php echo $link; ?></a>
-
-
+    <div class="mainpost-wrapper">
+        <img src="./upload/<?php echo $postId .".". findFileExtensionByPostID($pdo, $postId); ?>" alt="FILL IN" class="post-img">
+        <div class="post-info">
+            <p class="post-title"> <?php echo findTitleByPostID($pdo, $postId); ?><?php ?></p>
+            <p class="postid">ID number: <?php echo $postId ?><?php ?></p>
+            <p class="username">Post by: <?php echo findUsernameByPostID($pdo, $postId); ?><?php ?></p>
+            <p class="post-description"><?php echo findDescriptionByPostID($pdo, $postId); ?><?php ?></p>
+            <p class="post-link"><?php echo findLinkByPostID($pdo, $postId); ?><?php ?></p>
+        </div>
     </div>
     <?php } else { ?>
         <p> postId unset </p>
