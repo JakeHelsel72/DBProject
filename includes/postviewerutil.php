@@ -103,9 +103,9 @@ function findUsernameByPostID(object $pdo, int $postId): ?string {
 
 function output_username() {
     if (isset($_SESSION["user_id"])){
-        echo $_SESSION["user_username"];
+        return $_SESSION["user_username"];
     } else {
-        echo </a href=>
+        return "not logged in";
     }
 }
 
