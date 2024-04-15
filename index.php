@@ -35,7 +35,8 @@ require_once("includes/login_view.php");
   <nav class="row">
     <img src="./WebDisplay/Assests/Logo.png" class="logo_img" alt="">
     <ul class="nav_links">
-        <li class="link link__hover-effect">Browser Blast</li>
+        <li class="link link__hover-effect">
+          <a href="homepage.php">Browser Blast</a></li>
     </ul>
   </nav>
   <?php

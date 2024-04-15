@@ -17,13 +17,18 @@ require_once("includes/config_session.php");
   <!-- Create a link (anchor tag) with the dynamic URL -->
     
     <nav class="row">
-        <img src="./Assests/Logo.png" class="logo_img" alt="">
+        <img src="./WebDisplay/Assests/Logo.png" class="logo_img" alt="">
         <ul class="nav_links">
-            <li class="link link__hover-effect">Experience</li>
+            <li class="link link__hover-effect">
+              <a href="feature.html">Experience</a>
+            </li>
+            <li class="link link__hover-effect">
+              <a href="post.php">Upload Experience</a>
+            </li>
             <li class="link link__hover-effect">Favorite</li>
             <?php if (!isset($_SESSION["user_id"])){ ?>
             <a href="index.php" class="link btn">
-                <li>Sign In</li>
+                Sign In
             </a>
             <?php } else { ?>
               <a href="accountviewer.php?uid=<?php echo $_SESSION["user_id"]?>" class="link btn">
