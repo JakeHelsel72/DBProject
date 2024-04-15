@@ -106,12 +106,9 @@ p{
     line-height: 1;
 }
 
-.postid{
-    font-size: 25px;
-    font-weight: bold;
-}
 
 .username{
+    font-size: 40px;
     font-weight: bold;
 }
 
