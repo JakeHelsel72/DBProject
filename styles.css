@@ -18,7 +18,9 @@ ul{
 }
 
 a{
-    text-decoration: nonee;
+    text-decoration: none;
+    color: white;
+    background-color: transparent;
 }
 
 .row{
