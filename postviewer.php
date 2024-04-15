@@ -22,7 +22,7 @@ $indexurl = "http://$_SERVER[HTTP_HOST]/{$baseDir}/index.php";
 ?>
 
 <!DOCTYPE html>
-<script>
+<!-- <script>
     function toggleLike(postId) {
     var likeIcon = document.getElementById('likeIcon');
 
@@ -34,6 +34,30 @@ $indexurl = "http://$_SERVER[HTTP_HOST]/{$baseDir}/index.php";
         likeIcon.classList.remove('fa-solid');
         likeIcon.classList.add('fa-regular');
     }
+</script> -->
+<script>
+function submitLikeForm() {
+    var formData = new FormData(document.getElementById('likeForm'));
+    var xhr = new XMLHttpRequest();
+
+    xhr.open('POST', 'like.php', true);
+
+    // Set up event listener for when the request completes
+    xhr.onload = function() {
+        if (xhr.status >= 200 && xhr.status < 300) {
+            // Request was successful
+            console.log('Like action succeeded:', xhr.responseText);
+            // Handle response here (optional)
+        } else {
+            // Request failed
+            console.error('Like action failed:', xhr.statusText);
+            // Handle error here (optional)
+        }
+    };
+
+    // Send the form data asynchronously
+    xhr.send(formData);
+}
 </script>
 
 <html lang="en">
@@ -55,7 +79,10 @@ $indexurl = "http://$_SERVER[HTTP_HOST]/{$baseDir}/index.php";
         <ul class="nav_links">
             <li class="link link__hover-effect">Experience</li>
             <li class="link link__hover-effect">Favorite</li>
-            <li class="link btn" onclick="redirectToIndex(<?php echo $indexurl?>)">Sign In</li>
+
+            <a href="index.php" class="link btn">
+                <li>Sign In</li>
+            </a>
         </ul>
     </nav>
   <?php
@@ -76,9 +103,11 @@ $indexurl = "http://$_SERVER[HTTP_HOST]/{$baseDir}/index.php";
 
             <?php if (isset($_SESSION["user_id"])) { ?>
             <!-- User is logged in -->
-                <button id="likeButton" onclick="toggleLike(<?php echo $postId; ?>)">
-                   <i id="likeIcon" class="fa-regular fa-heart"></i>
-                </button>
+            <form id="likeForm" action="like.php" method="POST">
+                <input type="hidden" name="userId" value="<?php echo isset($_SESSION['user_id']) ? $_SESSION['user_id'] : ''; ?>">
+                <input type="hidden" name="postId" value="<?php echo $postId; ?>">
+                <button id="likeButton" type="button" onclick="submitLikeForm()">Like</button>
+            </form>
             <?php } else { ?>
                 <!-- User is not logged in -->
                 <button class="btn-notLogIn" disabled="disabled">Not logged in</button>

@@ -21,7 +21,16 @@ require_once("includes/config_session.php");
         <ul class="nav_links">
             <li class="link link__hover-effect">Experience</li>
             <li class="link link__hover-effect">Favorite</li>
-            <li class="link btn">Sign In</li>
+            <?php if (!isset($_SESSION["user_id"])){ ?>
+            <a href="index.php" class="link btn">
+                <li>Sign In</li>
+            </a>
+            <?php } else { ?>
+              <a href="accountviewer.php?uid=<?php echo $_SESSION["user_id"]?>" class="link btn">
+                  <li><?php echo $_SESSION["user_username"];  ?></li>
+              </a>
+              <li class="link link__hover-effect"></li>
+            <?php } ?>
         </ul>
     </nav>
     
