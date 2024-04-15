@@ -1,5 +1,6 @@
 <?php
 require_once("includes/database.php");
+require_once("includes/config_session.php");
 require_once("includes/postviewerutil.php");
 $postId = $_GET['postId'];
 $title = findTitleByPostID($pdo, $postId);
@@ -14,6 +15,7 @@ if (strpos($link, 'http://') === 0 || strpos($link, 'https://') === 0) {
     // $link is a relative path, prepend http:// to make it a valid URL
     $finalLink = "http://$link";
 }
+
 ?>
 
 <!DOCTYPE html>

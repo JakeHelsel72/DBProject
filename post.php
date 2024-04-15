@@ -11,6 +11,7 @@ require_once("includes/config_session.php");
     <title>Online Experiences</title>
     <link rel="stylesheet" href="post.css">
   </head>
+  <?php echo $_SESSION["user_id"];?>
   <body>
   <?php if (isset($_SESSION["user_id"])) { ?>
     <nav class="row">

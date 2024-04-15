@@ -2,6 +2,7 @@
 <html lang="en">
 <?php
 require_once("includes/database.php");
+require_once("includes/config_session.php");
 require_once("includes/postviewerutil.php");
 ?>
 <head>

@@ -1,5 +1,6 @@
 <?php
 require_once("includes/database.php");
+require_once("includes/config_session.php");
 require_once("includes/postviewerutil.php");
 $postId = $_GET['postId'];
 $title = findTitleByPostID($pdo, $postId);
@@ -61,10 +62,6 @@ function submitLikeForm() {
     <link rel="stylesheet" href="postviewer.css">
     <script src="https://kit.fontawesome.com/6443be5758.js" crossorigin="anonymous"></script>
   </head>
-  <?php
-
-  output_username(); // this is the viewing user
-  ?>
   <body>
     <nav class="row">
         <img src="./WebDisplay/Assests/Logo.png" class="logo_img" alt="">
