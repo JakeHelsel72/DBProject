@@ -1,20 +1,12 @@
 <?php
 require_once("includes/database.php");
-require_once("includes/config_session.php");
 require_once("includes/postviewerutil.php");
 $postId = $_GET['postId'];
 $title = findTitleByPostID($pdo, $postId);
 $username = findUsernameByPostID($pdo, $postId); // this is posting user
 $description = findDescriptionByPostID($pdo, $postId);
 $link = findLinkByPostID($pdo, $postId);
-// Check if $link is an external URL or a relative path
-if (strpos($link, 'http://') === 0 || strpos($link, 'https://') === 0) {
-    // $link is already a full URL, use it directly
-    $finalLink = $link;
-} else {
-    // $link is a relative path, prepend http:// to make it a valid URL
-    $finalLink = "http://$link";
-}
+$link = fix_link($link) // adds http:// or https://
 $parts = explode('/', trim($_SERVER['PHP_SELF'], '/'));
 $baseDir = implode('/', array_slice($parts, 0, -1)); // Assuming the base directory is the first segment
 $currentpage = end($parts);

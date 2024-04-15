@@ -109,5 +109,17 @@ function output_username() {
     }
 }
 
+function fix_link(string $link) {
+    // Check if $link is an external URL or a relative path
+    if (strpos($link, 'http://') === 0 || strpos($link, 'https://') === 0) {
+        // $link is already a full URL, use it directly
+        $finalLink = $link;
+        return $finalLink;
+    } else {
+        // $link is a relative path, prepend http:// to make it a valid URL
+        $finalLink = "http://$link";
+        return $finalLink;
+    }
+}
 
 

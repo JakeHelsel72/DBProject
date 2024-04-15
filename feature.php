@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+require_once("includes/database.php");
+require_once("includes/postviewerutil.php");
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,86 +38,36 @@
     <div class="feature">
         <h1 class="title feature-title">Feature Experience</h1>
         <div class="feature-lists">
-            <div class="feature-card">
-                <img class="card-img" src="./upload/2.png" alt="">
-                <div class="card-info">
-                    <h4 class="title-card">Game name</h4>
-                    <div class="player_num">Player: 2</div>
-                    <div class="weblink">
-                        <a href="#" class="webanchor" >Link to game</a>
+            <?php
+            // Assuming you have a database connection named $pdo
+
+            // Query to fetch all rows from the `post` table
+            $query = "SELECT * FROM post";
+            $stmt = $pdo->query($query);
+
+            // Fetch all rows as an associative array
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            // Output the HTML structure for each post
+            foreach ($results as $row) {
+                //$playerNum = $row['player_count'];
+                $imageSrc = './upload/' . $row['PostID'] . "." . $row['FileExt']; // Assuming image_filename column contains the filename
+                // Output the HTML structure for each post
+                ?>
+                <div class="feature-card">
+                    <img class="card-img" src="<?php echo $imageSrc; ?>" alt="post image">
+                    <div class="card-info">
+                        <h4 class="title-card"><?php echo htmlspecialchars($row['Title']); ?></h4>
+                        <div class="player_num">Player(s): 1 </div>
+                        <!-- <div class="player_num">Player: <?php echo $playerNum; ?></div> -->
+                        <div class="weblink">
+                            <a href="<?php echo htmlspecialchars(fix_link($row['Link'])); ?>" class="webanchor">Link to game</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="feature-card">
-                <img class="card-img" src="./WebDisplay/Assests/Game2.png" alt="">
-                <div class="card-info">
-                    <h4 class="title-card">Game name</h4>
-                    <div class="player_num">Player: 2</div>
-                    <div class="weblink">
-                        <a href="#" class="webanchor" >Link to game</a>
-                    </div>
-                </div>
-            </div>
-            <div class="feature-card">
-                <img class="card-img" src="./WebDisplay/Assests/Game3.png" alt="">
-                <div class="card-info">
-                    <h4 class="title-card">Game name</h4>
-                    <div class="player_num">Player: 2</div>
-                    <div class="weblink">
-                        <a href="#" class="webanchor" >Link to game</a>
-                    </div>
-                </div>
-            </div>
-            <div class="feature-card">
-                <img class="card-img" src="./WebDisplay/Assests/Game4.png" alt="">
-                <div class="card-info">
-                    <h4 class="title-card">Game name</h4>
-                    <div class="player_num">Player: 2</div>
-                    <div class="weblink">
-                        <a href="#" class="webanchor" >Link to game</a>
-                    </div>
-                </div>
-            </div>
-            <div class="feature-card">
-                <img class="card-img" src="./WebDisplay/Assests/Game5.png" alt="">
-                <div class="card-info">
-                    <h4 class="title-card">Game name</h4>
-                    <div class="player_num">Player: 3</div>
-                    <div class="weblink">
-                        <a href="#" class="webanchor" >Link to game</a>
-                    </div>
-                </div>
-            </div>
-            <div class="feature-card">
-                <img class="card-img" src="./WebDisplay/Assests/Game6.png" alt="">
-                <div class="card-info">
-                    <h4 class="title-card">Game name</h4>
-                    <div class="player_num">Player: solo</div>
-                    <div class="weblink">
-                        <a href="#" class="webanchor" >Link to game</a>
-                    </div>
-                </div>
-            </div>
-            <div class="feature-card">
-                <img class="card-img" src="./WebDisplay/Assests/Game7.png" alt="">
-                <div class="card-info">
-                    <h4 class="title-card">Game name</h4>
-                    <div class="player_num">Player:10</div>
-                    <div class="weblink">
-                        <a href="#" class="webanchor" >Link to game</a>
-                    </div>
-                </div>
-            </div>
-            <div class="feature-card">
-                <img class="card-img" src="./WebDisplay/Assests/Game8.png" alt="">
-                <div class="card-info">
-                    <h4 class="title-card">Game name</h4>
-                    <div class="player_num">Player: 4</div>
-                    <div class="weblink">
-                        <a href="#" class="webanchor" >Link to game</a>
-                    </div>
-                </div>
-            </div>
+                <?php
+            }
+            ?>
         </div>
     </div>
 

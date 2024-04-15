@@ -1,6 +1,5 @@
 <?php
 require_once("includes/database.php");
-require_once("includes/config_session.php");
 require_once("includes/postviewerutil.php");
 $postId = $_GET['postId'];
 $title = findTitleByPostID($pdo, $postId);
