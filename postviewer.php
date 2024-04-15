@@ -108,6 +108,7 @@ function submitLikeForm() {
                 <input type="hidden" name="postId" value="<?php echo $postId; ?>">
                 <button id="likeButton" type="button" onclick="submitLikeForm()">Like</button>
             </form>
+
             <?php } else { ?>
                 <!-- User is not logged in -->
                 <button class="btn-notLogIn" disabled="disabled">Not logged in</button>
