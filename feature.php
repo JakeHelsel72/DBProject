@@ -61,7 +61,10 @@ require_once("includes/postviewerutil.php");
                         <div class="player_num">Player(s): 1 </div>
                         <!-- <div class="player_num">Player: <?php echo $playerNum; ?></div> -->
                         <div class="weblink">
-                            <a href="<?php echo htmlspecialchars(fix_link($row['Link'])); ?>" class="webanchor">Link to game</a>
+                        <a href="<?php echo fix_link($row['Link']); ?>" class="webanchor">Link to game</a>
+                        </div>
+                        <div class="weblink">
+                            <a href="<?php echo "postviewer.php?postId={$row['PostID']}" ?>" class="webanchor">View Experience</a>
                         </div>
                     </div>
                 </div>
