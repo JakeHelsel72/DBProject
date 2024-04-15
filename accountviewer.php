@@ -1,6 +1,7 @@
 <?php
 require_once("includes/database.php");
 require_once("includes/config_session.php");
+$_SESSION['redirect_url'] = $_SERVER['REQUEST_URI']; // return url for if someone signs in, they can come back to this page
 require_once("includes/postviewerutil.php");
 $postId = $_GET['postId'];
 $title = findTitleByPostID($pdo, $postId);

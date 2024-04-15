@@ -43,7 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         $_SESSION["user_username"] = htmlspecialchars($result["Username"]); // sanitize input for XSS
         $_SESSION["last_regen"] = time(); 
         //print_r($result);
-        header("Location: ../index.php?login=success");
+        $redirect_url = $_SESSION['redirect_url'];
+        //unset($_SESSION['redirect_url']); // Unset the stored URL after redirecting
+        header("Location: $redirect_url");
         $pdo = null;
         $stmt = null;
 

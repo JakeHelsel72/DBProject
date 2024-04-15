@@ -1,5 +1,6 @@
 <?php
 require_once("includes/config_session.php");
+$_SESSION['redirect_url'] = $_SERVER['REQUEST_URI']; // return url for if someone signs in, they can come back to this page
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +21,7 @@ require_once("includes/config_session.php");
         <img src="./WebDisplay/Assests/Logo.png" class="logo_img" alt="">
         <ul class="nav_links">
             <li class="link link__hover-effect">
-              <a href="feature.html">Experience</a>
+              <a href="feature.php">Experience</a>
             </li>
             <li class="link link__hover-effect">
               <a href="post.php">Upload Experience</a>
