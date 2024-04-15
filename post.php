@@ -12,14 +12,22 @@ require_once("includes/config_session.php");
     <link rel="stylesheet" href="post.css">
   </head>
   <body>
-  <?php
-  if (!isset($_SESSION["user_id"])) { ?>
+  <?php if (isset($_SESSION["user_id"])) { ?>
     <nav class="row">
         <img src="./WebDisplay/Assests/Logo.png" class="logo_img" alt="">
         <ul class="nav_links">
             <li class="link">Your Experience</li>
             <li class="link">Favorite</li>
-            <li class="link">UserName</li>
+            <?php if (!isset($_SESSION["user_id"])){ ?>
+            <a href="index.php" class="link">
+                Sign In
+            </a>
+            <?php } else { ?>
+              <a href="index.php" class="link">
+                  <li><?php echo $_SESSION["user_username"];  ?></li>
+              </a>
+              <li class="link link__hover-effect"></li>
+            <?php } ?>
         </ul>
     </nav>
     <?php

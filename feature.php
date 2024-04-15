@@ -35,7 +35,7 @@
         <h1 class="title feature-title">Feature Experience</h1>
         <div class="feature-lists">
             <div class="feature-card">
-                <img class="card-img" src="/WebDisplay/Assests/Game1.png" alt="">
+                <img class="card-img" src="./upload/2.png" alt="">
                 <div class="card-info">
                     <h4 class="title-card">Game name</h4>
                     <div class="player_num">Player: 2</div>
@@ -45,7 +45,7 @@
                 </div>
             </div>
             <div class="feature-card">
-                <img class="card-img" src="/WebDisplay/Assests/Game2.png" alt="">
+                <img class="card-img" src="./WebDisplay/Assests/Game2.png" alt="">
                 <div class="card-info">
                     <h4 class="title-card">Game name</h4>
                     <div class="player_num">Player: 2</div>
@@ -55,7 +55,7 @@
                 </div>
             </div>
             <div class="feature-card">
-                <img class="card-img" src="/WebDisplay/Assests/Game3.png" alt="">
+                <img class="card-img" src="./WebDisplay/Assests/Game3.png" alt="">
                 <div class="card-info">
                     <h4 class="title-card">Game name</h4>
                     <div class="player_num">Player: 2</div>
@@ -65,7 +65,7 @@
                 </div>
             </div>
             <div class="feature-card">
-                <img class="card-img" src="/WebDisplay/Assests/Game4.png" alt="">
+                <img class="card-img" src="./WebDisplay/Assests/Game4.png" alt="">
                 <div class="card-info">
                     <h4 class="title-card">Game name</h4>
                     <div class="player_num">Player: 2</div>
@@ -75,7 +75,7 @@
                 </div>
             </div>
             <div class="feature-card">
-                <img class="card-img" src="/WebDisplay/Assests/Game5.png" alt="">
+                <img class="card-img" src="./WebDisplay/Assests/Game5.png" alt="">
                 <div class="card-info">
                     <h4 class="title-card">Game name</h4>
                     <div class="player_num">Player: 3</div>
@@ -85,7 +85,7 @@
                 </div>
             </div>
             <div class="feature-card">
-                <img class="card-img" src="/WebDisplay/Assests/Game6.png" alt="">
+                <img class="card-img" src="./WebDisplay/Assests/Game6.png" alt="">
                 <div class="card-info">
                     <h4 class="title-card">Game name</h4>
                     <div class="player_num">Player: solo</div>
@@ -95,7 +95,7 @@
                 </div>
             </div>
             <div class="feature-card">
-                <img class="card-img" src="/WebDisplay/Assests/Game7.png" alt="">
+                <img class="card-img" src="./WebDisplay/Assests/Game7.png" alt="">
                 <div class="card-info">
                     <h4 class="title-card">Game name</h4>
                     <div class="player_num">Player:10</div>
@@ -105,7 +105,7 @@
                 </div>
             </div>
             <div class="feature-card">
-                <img class="card-img" src="/WebDisplay/Assests/Game8.png" alt="">
+                <img class="card-img" src="./WebDisplay/Assests/Game8.png" alt="">
                 <div class="card-info">
                     <h4 class="title-card">Game name</h4>
                     <div class="player_num">Player: 4</div>
