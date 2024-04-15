@@ -24,17 +24,15 @@ $indexurl = "http://$_SERVER[HTTP_HOST]/{$baseDir}/index.php";
 <!DOCTYPE html>
 <script>
     function toggleLike(postId) {
-        var likeIcon = document.getElementById('likeIcon');
-        var likeText = document.getElementById('likeText');
+    var likeIcon = document.getElementById('likeIcon');
 
-        // Simulate toggling between liked and not liked (for demo purposes)
-        if (likeIcon.src.includes('empty_heart.png')) {
-            likeIcon.src = 'full_heart.png';
-            likeText.innerText = 'Liked';
-        } else {
-            likeIcon.src = 'empty_heart.png';
-            likeText.innerText = 'Like';
-        }
+    // Toggle between 'full-heart' and 'empty-heart' classes
+    if (likeIcon.classList.contains('fa-regular')) {
+        likeIcon.classList.remove('fa-regular');
+        likeIcon.classList.add('fa-solid');
+    } else {
+        likeIcon.classList.remove('fa-solid');
+        likeIcon.classList.add('fa-regular');
     }
 </script>
 
@@ -45,6 +43,7 @@ $indexurl = "http://$_SERVER[HTTP_HOST]/{$baseDir}/index.php";
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Experience <?php echo $title ?></title>
     <link rel="stylesheet" href="postviewer.css">
+    <script src="https://kit.fontawesome.com/6443be5758.js" crossorigin="anonymous"></script>
   </head>
   <?php
 
@@ -72,18 +71,17 @@ $indexurl = "http://$_SERVER[HTTP_HOST]/{$baseDir}/index.php";
             <p class="username">Post by: <?php echo findUsernameByPostID($pdo, $postId); ?><?php ?></p>
             <p class="post-description"><?php echo findDescriptionByPostID($pdo, $postId); ?><?php ?></p>
             <p class="post-link">
-                <a href="<?php echo $finalLink?>" target="_blank"><?php echo findLinkByPostID($pdo, $postId); ?></a>
+                <a class="anchor-link" href="<?php echo $finalLink?>" target="_blank"><?php echo findLinkByPostID($pdo, $postId); ?></a>
             </p>
 
             <?php if (isset($_SESSION["user_id"])) { ?>
             <!-- User is logged in -->
                 <button id="likeButton" onclick="toggleLike(<?php echo $postId; ?>)">
-                    <img id="likeIcon" src="empty_heart.png" alt="Like">
-                    <span id="likeText">Like</span>
+                   <i id="likeIcon" class="fa-regular fa-heart"></i>
                 </button>
             <?php } else { ?>
                 <!-- User is not logged in -->
-                <button disabled="disabled">Not logged in</button>
+                <button class="btn-notLogIn" disabled="disabled">Not logged in</button>
             <?php } ?>
 
         </div>
