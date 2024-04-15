@@ -37,8 +37,20 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
         if ($stmt->rowCount() > 0) {
             // Registration successful
-            header("Location: ../index.php?registration=success");
-            exit();
+            //get user info and login
+            $result = get_user($pdo, $username);
+            $newSessionId = session_create_id();
+            $sessionId = $newSessionId . "_" . $result["UserID"];
+            session_id($sessionId);
+    
+            $_SESSION["user_id"] = $result["UserID"];
+            $_SESSION["user_username"] = htmlspecialchars($result["Username"]); // sanitize input for XSS
+            $_SESSION["last_regen"] = time(); 
+            $redirect_url = $_SESSION['redirect_url'];
+            header("Location: $redirect_url");
+            $pdo = null;
+            $stmt = null;
+            die();
         } else {
             // Registration failed
             header("Location: ../index.php?registration=failed");
