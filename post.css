@@ -18,6 +18,9 @@ ul{
     list-style: none;
 }
 
+a{
+    text-decoration: none;
+}
 
 button{
     padding: 10px 20px;
@@ -28,6 +31,7 @@ button{
     background-color: white;
     border-radius: 5px;
     cursor: pointer;
+    transition: all 300ms ease;
 }
 
 h1,h4{
@@ -36,7 +40,6 @@ h1,h4{
 }
 
 /* NAV BAR */
-
 
 nav{
     display: flex;
@@ -57,7 +60,9 @@ nav{
 }
 
 .link{
-    padding: 10px 20px;
+    padding: 10px 0px;
+    cursor: pointer;
+    margin: 0px 20px;
     font-weight: bold;
     font-family: "Pixelify Sans", sans-serif;
 }
@@ -65,52 +70,98 @@ nav{
 
 .btn{
     color: black;
-    background-color: var(--Secondary--);
+    background-color: white;
     border-radius: 5px;
-    margin: 0 10px;
+    margin: 0px 10px;
+    padding: 10px 20px;
+    transition: all 300ms ease
 }
 
-/* 
+
+
+/* HOVER EFFECT */
+button:hover,
+.btn:hover{
+    transform: scale(1.1);
+}
+
+
+.link__hover-effect{
+    position: relative;
+}
+
+.link__hover-effect:after{
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    height: 3px;
+    width: 0;
+    right: 0;
+    background-color: white;
+    transition: all 300ms ease;
+}
+
+.link__hover-effect:hover:after{
+    left: 0;
+    width: 100%;
+}
+
+
+/*
 
 POST SECTION
 
 */
+
 .main{
     background-color: white;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 100vw;
-    height: calc(100vh - 150px);
-    padding: 50px 20px;
+    padding: 50px;
     color: black;
+}
+.img-wrapper{
+    background-color: white;
+    display: flex;
+    align-items: center;
+}
+.post-img{
+    width: 40vw;
 }
 
 .upload{
-    width: 40vw;
-    text-align: center;
-    margin: auto;
-    padding:30px 0px;
     border-radius: 10px;
+    padding: 0px 40px;
+    width: 65vw;
 }
 
-
-.post-img{
-    width: 40vw;
-    height: 500px;
-    border-radius: 10px;
-    margin: auto;
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
 
 .title{
-    margin: 50px 0px;
+    margin: 30px 0px;
+    text-align: center;
 }
+
+
+textarea {
+    width: 100%; 
+    resize: none;
+    
+}
+
+#input,
 .input{
-    width: 300px;
+    width: 350px;
     height: 60px;
-    margin: 10px;
+    margin: 5px;
     padding-left: 10px;
     border-radius: 10px;
     font-size: 18px;
 
 }
-
