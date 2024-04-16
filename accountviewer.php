@@ -30,8 +30,15 @@ $username = getUsernameByUID($pdo, $userId);
             }
         }
 
-        function submitLikeForm() {
-            var formData = new FormData(document.getElementById('likeForm'));
+        function submitFollowForm() {
+            var followingUserId = <?php echo isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 'null'; ?>;
+            var followedUserId = <?php echo isset($userId) ? $userId : 'null'; ?>;
+            // Create a new FormData object
+            var formData = new FormData();
+
+            // Append data to FormData object
+            formData.append('followingUserId', followingUserId);
+            formData.append('followedUserId', followedUserId);
             var xhr = new XMLHttpRequest();
 
             xhr.open('POST', 'follow.php', true);
@@ -96,15 +103,11 @@ $username = getUsernameByUID($pdo, $userId);
     </nav>
     <div class="Profile">
         <h3 class="user-title"><?php echo $username ?>'s Profile</h3>
-        <div class="follow-btn" onclick="follow(this)">Follow</div>
+
+        <div class="follow-btn" onclick="follow(this); submitFollowForm();">Follow</div> 
     </div>
   <?php
   if (isset($userId)) { ?>
-            <form id="likeForm" action="follow.php" method="POST">
-                <input type="hidden" name="followingUserId" value="<?php echo isset($_SESSION['user_id']) ? $_SESSION['user_id'] : ''; ?>">
-                <input type="hidden" name="followedUserId" value="<?php echo isset($userId) ? $userId : ''; ?>">
-                <i  id="likeButton" onclick="submitLikeForm(); toggleLike()" class="fa-regular fa-heart"></i>
-            </form>
         <div class="user-post row">
             <h1 class="title">Post</h1>
             <div class="feature-lists">
