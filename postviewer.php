@@ -110,8 +110,11 @@ function redirectToLink(customLink) {
         <div class="post-info">
             <p class="post-title"> <?php echo findTitleByPostID($pdo, $postId); ?><?php ?></p>
             <!-- <p class="postid">ID number: <?php echo $postId ?><?php ?></p> --> 
-            <p class="username" onclick="redirectToLink('<?php echo "accountviewer.php?userId={$row['$UID']}" ?>')">
-            Post by: <?php echo findUsernameByPostID($pdo, $postId); ?><?php ?></p>
+            <p class="username">
+            Post by: <span class="userclick" onclick="redirectToLink()">
+                <?php echo findUsernameByPostID($pdo, $postId); ?><?php ?> 
+                    </span>
+            </p>
             <p class="post-description"><?php echo findDescriptionByPostID($pdo, $postId); ?><?php ?></p>
             <p class="post-link">
                 <a class="anchor-link" href="<?php echo $finalLink?>" target="_blank"><?php echo findLinkByPostID($pdo, $postId); ?></a>
