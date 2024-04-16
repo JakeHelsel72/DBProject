@@ -172,9 +172,10 @@ p{
 #likeButton{
     font-size: 20px;
     border: none;
-    background-color: white;
     cursor: pointer;
     transition: all 400ms ease;
+    display: flex;
+    justify-content: end;
 }
 
 .fa-heart{
@@ -190,14 +191,16 @@ p{
 
 
 .btn-notLogIn{
-    background-color: var(--Accent---);
-    color: white;
     padding: 5px 10px;
     border: none;
     font-weight: bold;
     cursor: pointer;
     font-size: 18px;
+    border-radius: 5px;
     transition: all 400ms ease;
+    color: rgb(234, 160, 160);
+    margin-top: 60px;
+
 }
 
 #likeForm{

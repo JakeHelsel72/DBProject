@@ -63,14 +63,14 @@ h1,h4{
 
 
 .btn-notLogIn{
-    background-color: var(--Accent---);
-    color: white;
+    background-color: red;
     padding: 5px 10px;
     border: none;
     font-weight: bold;
     cursor: pointer;
     font-size: 18px;
     transition: all 400ms ease;
+    border-radius: 5px;
 }
 
 #likeForm{

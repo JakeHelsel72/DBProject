@@ -90,14 +90,7 @@ function redirectToLink(customLink) {
             <a href="index.php" class="link btn">
                 Sign In
             </a>
-            <?php } else { ?>
-              <li class="link link__hover-effect">
-              <a href="accountviewer.php?userId=<?php echo $_SESSION["user_id"];?>">Favorites</a>
-            </li> 
-              <a href="index.php" class="link btn">
-                <?php echo $_SESSION["user_username"];  ?>
-              </a>
-            <?php } ?>
+           
         </ul>
     </nav>
   <?php
@@ -106,19 +99,19 @@ function redirectToLink(customLink) {
   <?php
   if (isset($postId)) { ?>
     <div class="mainpost-wrapper">
-        <img src="./upload/<?php echo $postId .".". findFileExtensionByPostID($pdo, $postId); ?>" alt="FILL IN" class="post-img">
+        <img src="./WebDisplay/Assests/Game1.png" alt="FILL IN" class="post-img">
         <div class="post-info">
-            <p class="post-title"> <?php echo findTitleByPostID($pdo, $postId); ?><?php ?></p>
+            <p class="post-title">Spider Cat Advantage <?php echo findTitleByPostID($pdo, $postId); ?><?php ?></p>
             <!-- <p class="postid">ID number: <?php echo $postId ?><?php ?></p> --> 
             <p class="username">
             Post by: <span class="userclick" onclick="redirectToLink()">
-                <?php echo findUsernameByPostID($pdo, $postId); ?><?php ?> 
+                <?php echo findUsernameByPostID($pdo, $postId); ?><?php ?> Cat Nguyen
                     </span>
             </p>
-            <p class="post-description"><?php echo findDescriptionByPostID($pdo, $postId); ?><?php ?></p>
+            <p class="post-description"><?php echo findDescriptionByPostID($pdo, $postId); ?><?php ?> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod doloribus, aliquam sint soluta consequuntur repellat exercitationem rerum, magni suscipit laboriosam, distinctio placeat natus veritatis assumenda? Cum pariatur adipisci amet quaerat.</p>
             <p class="post-link">
-                <a class="anchor-link" href="<?php echo $finalLink?>" target="_blank"><?php echo findLinkByPostID($pdo, $postId); ?></a>
-            </p>
+                <a class="anchor-link" href="<?php echo $finalLink?>" target="_blank"><?php echo findLinkByPostID($pdo, $postId); ?>Link here</a>
+            </p>›
 
             <?php if (isset($_SESSION["user_id"])) { ?>
             <!-- User is logged in -->
@@ -135,9 +128,7 @@ function redirectToLink(customLink) {
 
         </div>
     </div>
-    <?php } else { ?>
-        <p> postId unset </p>
-    <?php } ?>
+    
   </body>
     
 
