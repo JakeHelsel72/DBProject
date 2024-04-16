@@ -24,6 +24,13 @@ $username = getUsernameByUID($pdo, $userId);
           // Redirect the user to the specified URL
           window.location.href = destination;
       }
+    function follow(element) {
+        if (element.innerHTML === "Follow") {
+            element.innerHTML = "Followed";
+        } else {
+            element.innerHTML = "Follow";
+        }
+    }
   </script>
   </head>
   <body>
@@ -51,11 +58,14 @@ $username = getUsernameByUID($pdo, $userId);
             <?php } ?>
         </ul>
     </nav>
+    <div class="Profile">
+        <h3 class="user-title"><?php echo $username ?>'s Profile</h3>
+        <div class="follow-btn" onclick="follow(this)">Follow</div>
+    </div>
   <?php
   if (isset($userId)) { ?>
-    <div class="main">
-        <div class="feature">
-            <h1 class="title feature-title"><?php echo $username ?>'s posts</h1>
+        <div class="user-post row">
+            <h1 class="title">Post</h1>
             <div class="feature-lists">
                 <?php
                 // Assuming you have a database connection named $pdo
@@ -91,8 +101,8 @@ $username = getUsernameByUID($pdo, $userId);
                 <?php } ?>
             </div>
         </div>
-        <div class="feature">
-            <h1 class="title feature-title"><?php echo $username ?>'s likes</h1>
+        <div class="user-post row">
+            <h1 class="title">Likes</h1>
             <div class="feature-lists">
                 <?php
                 // Assuming you have a database connection named $pdo
@@ -128,7 +138,6 @@ $username = getUsernameByUID($pdo, $userId);
                 <?php } ?>
             </div>
         </div>
-    </div>
     <?php } else { ?>
         <p> userId not set </p>
     <?php } ?>
