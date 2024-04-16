@@ -1,3 +1,5 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
 *{
     margin: 0;
     padding: 0;
@@ -11,23 +13,12 @@
 
 
 /* NAV BAR */
-
-ul{
-    list-style: none;
-}
-
-a{
-    text-decoration: none;
-    color: white;
-    background-color: transparent;
-}
 nav{
     display: flex;
     margin: auto;
     justify-content: space-between;
     align-items: center;
     background-color: black;
-    padding: 0 50px;
 
 }
 
@@ -48,16 +39,26 @@ nav{
     font-family: "Pixelify Sans", sans-serif;
 }
 
+
 .btn{
-    padding: 10px 20px;
-    font-weight: bold;
-    border: none;
     color: black;
     background-color: white;
     border-radius: 5px;
-    transition: all 300ms ease;
-
+    margin: 0px 10px;
+    padding: 10px 20px;
+    transition: all 300ms ease
 }
+
+
+.btn{
+    color: black;
+    background-color: white;
+    border-radius: 5px;
+    margin: 0px 10px;
+    padding: 10px 20px;
+    transition: all 300ms ease
+}
+
 
 
 /* HOVER EFFECT */

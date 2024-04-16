@@ -73,15 +73,31 @@ function redirectToLink(customLink) {
     <script src="https://kit.fontawesome.com/6443be5758.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <nav class="row">
+  <nav class="row">
         <a class="homepage" href="homepage.php">
             <img src="./WebDisplay/Assests/Logo.png" class="logo_img" alt="">
         </a>
         <ul class="nav_links">
-            <li class="link link__hover-effect">Experience</li>
-            <li class="link link__hover-effect">Favorite</li>
+            <li class="link link__hover-effect">
+              <a href="feature.php">Explore</a>
+            </li>
+            <li class="link link__hover-effect">
+              <a href="post.php">Upload Experience</a>
+            </li>
+            <?php if (!isset($_SESSION["user_id"])){ ?>
+            
 
-            <a href="index.php" class="link btn">Sign In</a>
+            <a href="index.php" class="link btn">
+                Sign In
+            </a>
+            <?php } else { ?>
+              <li class="link link__hover-effect">
+              <a href="accountviewer.php?userId=<?php echo $_SESSION["user_id"];?>">Favorites</a>
+            </li> 
+              <a href="index.php" class="link btn">
+                <?php echo $_SESSION["user_username"];  ?>
+              </a>
+            <?php } ?>
         </ul>
     </nav>
   <?php
@@ -95,8 +111,7 @@ function redirectToLink(customLink) {
             <p class="post-title"> <?php echo findTitleByPostID($pdo, $postId); ?><?php ?></p>
             <!-- <p class="postid">ID number: <?php echo $postId ?><?php ?></p> --> 
             <p class="username" onclick="redirectToLink('<?php echo "accountviewer.php?userId={$row['$UID']}" ?>')">
-                <a  href="<?php echo $finalLink?>" target="_blank"><?php echo findLinkByPostID($pdo, $postId); ?></a>
-                Post by: <?php echo findUsernameByPostID($pdo, $postId); ?><?php ?></p>
+            Post by: <?php echo findUsernameByPostID($pdo, $postId); ?><?php ?></p>
             <p class="post-description"><?php echo findDescriptionByPostID($pdo, $postId); ?><?php ?></p>
             <p class="post-link">
                 <a class="anchor-link" href="<?php echo $finalLink?>" target="_blank"><?php echo findLinkByPostID($pdo, $postId); ?></a>
