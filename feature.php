@@ -19,12 +19,12 @@ require_once("includes/postviewerutil.php");
         <img src="./WebDisplay/Assests/Logo.png" class="logo_img" alt="">
         <ul class="nav_links">
             <li class="link link__hover-effect">
-              <a href="feature.html">Experience</a>
+              <a href="homepage.php">About</a>
             </li>
             <li class="link link__hover-effect">
               <a href="post.php">Upload Experience</a>
             </li>
-            <li class="link link__hover-effect">Favorite</li>
+            <li class="link link__hover-effect">Favorites</li>
             <?php if (!isset($_SESSION["user_id"])){ ?>
             <a href="index.php" class="link btn">
                 Sign In
@@ -38,7 +38,7 @@ require_once("includes/postviewerutil.php");
         </ul>
     </nav>
     <div class="feature">
-        <h1 class="title feature-title">Feature Experience</h1>
+        <h1 class="title feature-title">Featured Experiences</h1>
         <div class="feature-lists">
             <?php
             // Assuming you have a database connection named $pdo

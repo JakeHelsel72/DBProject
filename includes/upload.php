@@ -44,7 +44,7 @@ if (isset($_POST['submit']))
                 move_uploaded_file($fileTempName, $fileDestination);// place ^ into upload folder
 
                 // Redirect with success message
-                header("Location: ../index.php?uploadsuccess");
+                header("Location: ../postviewer.php?postId={$postId}");
                 exit();
             } else {
                 echo "File over 500mB";
