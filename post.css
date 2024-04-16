@@ -129,24 +129,27 @@ POST SECTION
 .main{
     background-color: white;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 100vw;
     padding: 50px;
     color: black;
 }
+
 .img-wrapper{
     background-color: white;
+    max-width: 500px;
     display: flex;
     align-items: center;
 }
+
 .post-img{
-    width: 40vw;
+    width: 100%;
 }
 
 .upload{
     border-radius: 10px;
     padding: 0px 40px;
-    width: 65vw;
+    width: 600px;
 }
 
 form{

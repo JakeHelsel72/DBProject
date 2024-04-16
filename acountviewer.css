@@ -184,6 +184,7 @@ button:hover,
 .feature-lists{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     width: 100%;
     border: solid 1px white;
     border-radius: 5px;
