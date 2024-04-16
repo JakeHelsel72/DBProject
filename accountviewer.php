@@ -4,7 +4,7 @@ require_once("includes/config_session.php");
 $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI']; // return url for if someone signs in, they can come back to this page
 require_once("includes/accountviewerutil.php");
 $userId = $_GET['userId'];
-$user = 
+$username = getUsernameByUID($pdo, $userId);
 ?>
 
 <!DOCTYPE html>
@@ -13,8 +13,8 @@ $user =
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Experience <?php echo $title ?></title>
-    <link rel="stylesheet" href="postviewer.css">
+    <title><?php echo $username ?>'s Profile</title>
+    <link rel="stylesheet" href="feature.css">
     <script src="https://kit.fontawesome.com/6443be5758.js" crossorigin="anonymous"></script>
   </head>
   <body>
@@ -30,34 +30,81 @@ $user =
         </ul>
     </nav>
   <?php
-        output_username();
-    ?>
-  <?php
-  if (isset($postId)) { ?>
-    <div class="mainpost-wrapper">
-        <img src="./upload/<?php echo $postId .".". findFileExtensionByPostID($pdo, $postId); ?>" alt="FILL IN" class="post-img">
-        <div class="post-info">
-            <p class="post-title"> <?php echo findTitleByPostID($pdo, $postId); ?><?php ?></p>
-            <!-- <p class="postid">ID number: <?php echo $postId ?><?php ?></p> --> 
-            <p class="username">Post by: <?php echo findUsernameByPostID($pdo, $postId); ?><?php ?></p>
-            <p class="post-description"><?php echo findDescriptionByPostID($pdo, $postId); ?><?php ?></p>
-            <p class="post-link">
-                <a class="anchor-link" href="<?php echo $finalLink?>" target="_blank"><?php echo findLinkByPostID($pdo, $postId); ?></a>
-            </p>
+  if (isset($userId)) { ?>
+    <div class="feature">
+        <h1 class="title feature-title"><?php echo $username ?>'s posts</h1>
+        <div class="feature-lists">
+            <?php
+            // Assuming you have a database connection named $pdo
 
-            <?php if (isset($_SESSION["user_id"])) { ?>
-            <!-- User is logged in -->
-            <form id="likeForm" action="like.php" method="POST">
-                <input type="hidden" name="userId" value="<?php echo isset($_SESSION['user_id']) ? $_SESSION['user_id'] : ''; ?>">
-                <input type="hidden" name="postId" value="<?php echo $postId; ?>">
-                <button id="likeButton" type="button" onclick="submitLikeForm()">Like</button>
-            </form>
+            // Query to fetch all user's posts
+            $query = "SELECT * FROM post WHERE UID = :UID";
+            $stmt = $pdo->prepare($query); // Prevent SQL injection
+            $stmt->bindParam(":UID", $userId);
+            $stmt->execute();
 
-            <?php } else { ?>
-                <!-- User is not logged in -->
-                <button class="btn-notLogIn" disabled="disabled">Not logged in</button>
+            // Fetch all rows as an associative array
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            // Output the HTML structure for each post
+            foreach ($results as $row) {
+                //$playerNum = $row['player_count'];
+                $imageSrc = './upload/' . $row['PostID'] . "." . $row['FileExt']; // Assuming image_filename column contains the filename
+                // Output the HTML structure for each post
+                ?>
+                <div class="feature-card">
+                    <img class="card-img" src="<?php echo $imageSrc; ?>" alt="post image">
+                    <div class="card-info">
+                        <h4 class="title-card"><?php echo htmlspecialchars($row['Title']); ?></h4>
+                        <div class="player_num">Player(s): 1 </div>
+                        <!-- <div class="player_num">Player: <?php echo $playerNum; ?></div> -->
+                        <div class="weblink">
+                        <a href="<?php echo fix_link($row['Link']); ?>" class="webanchor">Link to game</a>
+                        </div>
+                        <div class="weblink">
+                            <a href="<?php echo "postviewer.php?postId={$row['PostID']}" ?>" class="webanchor">View Experience</a>
+                        </div>
+                    </div>
+                </div>
             <?php } ?>
+        </div>
+    </div>
+    <div class="feature">
+        <h1 class="title feature-title"><?php echo $username ?>'s likes</h1>
+        <div class="feature-lists">
+            <?php
+            // Assuming you have a database connection named $pdo
 
+            // Query to fetch all user's posts
+            $query = "SELECT DISTINCT PostID, FileExt, Title, Link FROM post p JOIN likes l WHERE l.UID = :UID";
+            $stmt = $pdo->prepare($query); // Prevent SQL injection
+            $stmt->bindParam(":UID", $userId);
+            $stmt->execute();
+
+            // Fetch all rows as an associative array
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            // Output the HTML structure for each post
+            foreach ($results as $row) {
+                //$playerNum = $row['player_count'];
+                $imageSrc = './upload/' . $row['PostID'] . "." . $row['FileExt']; // Assuming image_filename column contains the filename
+                // Output the HTML structure for each post
+                ?>
+                <div class="feature-card">
+                    <img class="card-img" src="<?php echo $imageSrc; ?>" alt="post image">
+                    <div class="card-info">
+                        <h4 class="title-card"><?php echo htmlspecialchars($row['Title']); ?></h4>
+                        <div class="player_num">Player(s): 1 </div>
+                        <!-- <div class="player_num">Player: <?php echo $playerNum; ?></div> -->
+                        <div class="weblink">
+                        <a href="<?php echo fix_link($row['Link']); ?>" class="webanchor">Link to game</a>
+                        </div>
+                        <div class="weblink">
+                            <a href="<?php echo "postviewer.php?postId={$row['PostID']}" ?>" class="webanchor">View Experience</a>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
         </div>
     </div>
     <?php } else { ?>
