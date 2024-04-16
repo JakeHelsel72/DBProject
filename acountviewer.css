@@ -42,6 +42,42 @@ h1,h4{
     background-color: transparent;
 }
 
+#likeButton{
+    font-size: 20px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    transition: all 400ms ease;
+}
+
+.fa-heart{
+    background-color: white;
+    color: red;
+    padding: 5px 10px;
+    font-size: 25px;
+}
+
+#likeButton:hover{
+    transform: scale(1.05);
+}
+
+
+.btn-notLogIn{
+    background-color: var(--Accent---);
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 400ms ease;
+}
+
+#likeForm{
+    background-color: white;
+    
+}
+
 /* NAV BAR */
 nav{
     display: flex;

@@ -17,14 +17,50 @@ $username = getUsernameByUID($pdo, $userId);
     <link rel="stylesheet" href="acountviewer.css">
     <script src="https://kit.fontawesome.com/6443be5758.js" crossorigin="anonymous"></script>
     <script>
-      function redirectToLink(customLink) {
-          // Specify the URL you want to redirect to
-          var destination = customLink;
-          
-          // Redirect the user to the specified URL
-          window.location.href = destination;
-      }
-  </script>
+        function toggleLike() {
+            var likeIcon = document.getElementById('likeButton');
+
+            // Toggle between 'full-heart' and 'empty-heart' classes
+            if (likeIcon.classList.contains('fa-regular')) {
+                likeIcon.classList.remove('fa-regular');
+                likeIcon.classList.add('fa-solid');
+            } else {
+                likeIcon.classList.remove('fa-solid');
+                likeIcon.classList.add('fa-regular');
+            }
+        }
+
+        function submitLikeForm() {
+            var formData = new FormData(document.getElementById('likeForm'));
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('POST', 'follow.php', true);
+
+            // Set up event listener for when the request completes
+            xhr.onload = function() {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    // Request was successful
+                    console.log('Like action succeeded:', xhr.responseText);
+                    // Handle response here (optional)
+                } else {
+                    // Request failed
+                    console.error('Like action failed:', xhr.statusText);
+                    // Handle error here (optional)
+                }
+            };
+
+            // Send the form data asynchronously
+            xhr.send(formData);
+        }
+
+        function redirectToLink(customLink) {
+            // Specify the URL you want to redirect to
+            var destination = customLink;
+            
+            // Redirect the user to the specified URL
+            window.location.href = destination;
+        }
+        </script>
   </head>
   <body>
   <nav class="row">
@@ -54,6 +90,11 @@ $username = getUsernameByUID($pdo, $userId);
   <?php
   if (isset($userId)) { ?>
     <div class="main">
+            <form id="likeForm" action="follow.php" method="POST">
+                <input type="hidden" name="followingUserId" value="<?php echo isset($_SESSION['user_id']) ? $_SESSION['user_id'] : ''; ?>">
+                <input type="hidden" name="followedUserId" value="<?php echo isset($userId) ? $userId : ''; ?>">
+                <i  id="likeButton" onclick="submitLikeForm(); toggleLike()" class="fa-regular fa-heart"></i>
+            </form>
         <div class="feature">
             <h1 class="title feature-title"><?php echo $username ?>'s posts</h1>
             <div class="feature-lists">

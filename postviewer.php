@@ -17,9 +17,6 @@ $UID = findUIDByPostID($pdo, $postId);
 ?>
 
 <!DOCTYPE html>
-<!-- <script>
-    
-</script> -->
 <script>
   function toggleLike() {
     var likeIcon = document.getElementById('likeButton');

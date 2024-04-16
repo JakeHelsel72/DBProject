@@ -19,10 +19,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $existingLike = $stmt->fetch(PDO::FETCH_ASSOC);
         
         if (!$existingLike) {
-            // Perform your logic here using $userId and $postId
-            // Example: Insert data into database table 'likes'
-            // Replace this with your specific logic
-            // Assuming you have a database connection $pdo
             $query = "INSERT INTO likes (UID, PID) 
                     SELECT :userId, :postId 
                     WHERE NOT EXISTS (
