@@ -18,7 +18,9 @@ $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI']; // return url for if someon
   <!-- Create a link (anchor tag) with the dynamic URL -->
     
     <nav class="row">
-        <img src="./WebDisplay/Assests/Logo.png" class="logo_img" alt="">
+        <a class="homepage" href="homepage.php">
+            <img src="./WebDisplay/Assests/Logo.png" class="logo_img" alt="">
+        </a>
         <ul class="nav_links">
             <li class="link link__hover-effect">
               <a href="feature.php">Experience</a>

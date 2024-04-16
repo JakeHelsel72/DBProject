@@ -65,7 +65,9 @@ function submitLikeForm() {
   </head>
   <body>
     <nav class="row">
-        <img src="./WebDisplay/Assests/Logo.png" class="logo_img" alt="">
+        <a class="homepage" href="homepage.php">
+            <img src="./WebDisplay/Assests/Logo.png" class="logo_img" alt="">
+        </a>
         <ul class="nav_links">
             <li class="link link__hover-effect">Experience</li>
             <li class="link link__hover-effect">Favorite</li>

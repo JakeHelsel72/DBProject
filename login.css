@@ -50,6 +50,9 @@ SIGNUP FORM
 
 a{
     color: var(--Primary--);
+    text-decoration: none;
+    background-color: transparent;
+    
 }
 
 .Login-wrapper{

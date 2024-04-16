@@ -11,17 +11,27 @@ $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI']; // return url for if someon
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Online Experiences</title>
     <link rel="stylesheet" href="post.css">
+    <script>
+        function autoResize(textarea) {
+            textarea.style.height = 'auto'; 
+            textarea.style.height = textarea.scrollHeight + 'px';
+        }
+        </script>
   </head>
   <body>
   
   <?php if (isset($_SESSION["user_id"])) { ?>
-    <nav class="row">
-        <img src="./WebDisplay/Assests/Logo.png" class="logo_img" alt="">
+    <nav class="">
+        <a class="homepage" href="homepage.php">
+            <img src="./WebDisplay/Assests/Logo.png" class="logo_img" alt="">
+        </a>
         <ul class="nav_links">
-            <li class="link">Your Experience</li>
-            <li class="link">Favorite</li>
+            <li class="link link__hover-effect">
+                <a href="feature.php">Experience</a>
+              </li>
+            <li class="link link__hover-effect">Favorite</li>
             <?php if (!isset($_SESSION["user_id"])){ ?>
-            <a href="index.php" class="link">
+            <a href="index.php" class="link btn">
                 Sign In
             </a>
             <?php } else { ?>
@@ -33,8 +43,10 @@ $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI']; // return url for if someon
         </ul>
     </nav>
   <?php } else { ?>
-      <nav class="row">
-        <img src="./WebDisplay/Assests/Logo.png" class="logo_img" alt="">
+      <nav class="">
+        <a class="homepage" href="homepage.php">
+            <img src="./WebDisplay/Assests/Logo.png" class="logo_img" alt="">
+        </a>
         <ul class="nav_links">
             <li class="link link__hover-effect">
               <a href="feature.php">Experience</a>
@@ -53,22 +65,23 @@ $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI']; // return url for if someon
       </nav>
   <?php } ?>
   <div class="main">
-      <img class="post-img" src="./WebDisplay/Assests/Post.png" alt="Image by vectorjuice on Freepik">
-      <div class="upload">
+    <figure class="img-wrapper">
+        <img class="post-img" src="./WebDisplay/Assests/Post.png" alt="Image by vectorjuice on Freepik">
+    </figure>
+        <div class="upload">
       <?php if (isset($_SESSION["user_id"])) { ?>
           <h1 class="title">Upload your own experiences!</h1>
           <form action = "includes/upload.php" method="POST" enctype="multipart/form-data">
               <input class="input" type="text" name="title" placeholder="Post Title"> <br>
-              <input class="input" type="text" name="description" placeholder="Description"> <br>
+              <textarea id="input" type="text" name="description" placeholder="Description"  oninput="autoResize(this)"></textarea>
               <input class="input" type="text" name="link" placeholder="Relevant Link"> <br>
               <input class="input" type="file" name="image"> <br>
               <button type="submit" name="submit">UPLOAD</button>
-        
+              <?php } else { ?>
+                <h1 class="title">User must be logged in to upload an Experience!</h1>
+              <?php } ?>
           </form>
-          <?php } else { ?>
-            <h1 class="title">User must be logged in to upload an Experience!</h1>
-          <?php } ?>
-      </div>
+        </div>
 
   </div>
   <div class="post-list">
