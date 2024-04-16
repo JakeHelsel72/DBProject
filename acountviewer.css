@@ -169,7 +169,6 @@ button:hover,
     display: flex;
     transition: all 300ms ease;
     cursor: pointer;
-    width: 300px;
 }
 
 .feature-card:hover{
@@ -178,12 +177,12 @@ button:hover,
 
 .card-img{
     display: flex;
-    width: 200px;
+    width: 150px;
     border-radius: 5px;
 }
 
 .card-info{
-    width: 150px;
+    width: 120px;
     background-color: white;
     color: black;
     padding: 0px 20px;
