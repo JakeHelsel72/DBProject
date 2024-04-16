@@ -76,7 +76,7 @@ $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI']; // return url for if someon
               <textarea id="input" type="text" name="description" placeholder="Description"  oninput="autoResize(this)"></textarea>
               <input class="input" type="text" name="link" placeholder="Relevant Link"> <br>
               <input class="input" type="file" name="image"> <br>
-              <button type="submit" name="submit">UPLOAD</button>
+              <button class="update-btn" type="submit" name="submit">UPLOAD</button>
               <?php } else { ?>
                 <h1 class="title">User must be logged in to upload an Experience!</h1>
               <?php } ?>
