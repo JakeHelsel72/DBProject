@@ -183,3 +183,7 @@ p{
     font-size: 18px;
     transition: all 400ms ease;
 }
+
+#likeForm{
+    margin-bottom: 30px;
+}
