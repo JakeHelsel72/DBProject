@@ -28,12 +28,16 @@ $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI']; // return url for if someon
             <li class="link link__hover-effect">
               <a href="post.php">Upload Experience</a>
             </li>
-            <li class="link link__hover-effect">Favorites</li> <!-- href="accountviewer.php?uid=<?php echo $_SESSION["user_id"]?>" class="link btn"> -->
             <?php if (!isset($_SESSION["user_id"])){ ?>
+            
+
             <a href="index.php" class="link btn">
                 Sign In
             </a>
             <?php } else { ?>
+              <li class="link link__hover-effect">
+              <a href="accountviewer.php?userId=<?php echo $_SESSION["user_id"];?>">Favorites</a>
+            </li> 
               <a href="index.php" class="link btn">
                 <?php echo $_SESSION["user_username"];  ?>
               </a>

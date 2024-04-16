@@ -75,6 +75,7 @@ $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI']; // return url for if someon
               <input class="input" type="text" name="title" placeholder="Post Title"> <br>
               <textarea id="input" type="text" name="description" placeholder="Description"  oninput="autoResize(this)"></textarea>
               <input class="input" type="text" name="link" placeholder="Relevant Link"> <br>
+              <input class="input" type="number" name="players" placeholder="Number of Players" value="1" min="1"><br> <!-- New input for number of players -->
               <input class="input" type="file" name="image"> <br>
               <button class="update-btn" type="submit" name="submit">UPLOAD</button>
               <?php } else { ?>
