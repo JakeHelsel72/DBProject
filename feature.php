@@ -23,22 +23,25 @@ require_once("includes/postviewerutil.php");
 </head>
 
 <body>
-    <nav class="row">
-        <img src="./WebDisplay/Assests/Logo.png" class="logo_img" alt="">
+<nav class="row">
+        <a class="homepage" href="homepage.php">
+            <img src="./WebDisplay/Assests/Logo.png" class="logo_img" alt="">
+        </a>
         <ul class="nav_links">
-            <li class="link link__hover-effect">
-              <a href="feature.html">Experience</a>
-            </li>
             <li class="link link__hover-effect">
               <a href="post.php">Upload Experience</a>
             </li>
-            <li class="link link__hover-effect">Favorite</li>
             <?php if (!isset($_SESSION["user_id"])){ ?>
+            
+
             <a href="index.php" class="link btn">
                 Sign In
             </a>
             <?php } else { ?>
-              <a href="accountviewer.php?uid=<?php echo $_SESSION["user_id"]?>" class="link btn">
+              <li class="link link__hover-effect">
+              <a href="accountviewer.php?userId=<?php echo $_SESSION["user_id"];?>">Favorites</a>
+            </li> 
+              <a href="index.php" class="link btn">
                 <?php echo $_SESSION["user_username"];  ?>
               </a>
             <?php } ?>

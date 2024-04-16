@@ -21,24 +21,30 @@ $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI']; // return url for if someon
   <body>
   
   <?php if (isset($_SESSION["user_id"])) { ?>
-    <nav class="">
+    <nav class="row">
         <a class="homepage" href="homepage.php">
             <img src="./WebDisplay/Assests/Logo.png" class="logo_img" alt="">
         </a>
         <ul class="nav_links">
             <li class="link link__hover-effect">
-                <a href="feature.php">Experience</a>
-              </li>
-            <li class="link link__hover-effect">Favorite</li>
+              <a href="feature.php">Explore</a>
+            </li>
+            <li class="link link__hover-effect">
+              <a href="post.php">Upload Experience</a>
+            </li>
             <?php if (!isset($_SESSION["user_id"])){ ?>
+            
+
             <a href="index.php" class="link btn">
                 Sign In
             </a>
             <?php } else { ?>
-              <a href="index.php" class="link">
-                  <li><?php echo $_SESSION["user_username"];  ?></li>
+              <li class="link link__hover-effect">
+              <a href="accountviewer.php?userId=<?php echo $_SESSION["user_id"];?>">Favorites</a>
+            </li> 
+              <a href="index.php" class="link btn">
+                <?php echo $_SESSION["user_username"];  ?>
               </a>
-              <li class="link link__hover-effect"></li>
             <?php } ?>
         </ul>
     </nav>

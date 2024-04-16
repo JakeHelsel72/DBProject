@@ -13,7 +13,7 @@ $parts = explode('/', trim($_SERVER['PHP_SELF'], '/'));
 $baseDir = implode('/', array_slice($parts, 0, -1)); // Assuming the base directory is the first segment
 $currentpage = end($parts);
 $indexurl = "http://$_SERVER[HTTP_HOST]/{$baseDir}/index.php";
-$UID = 
+$UID = findUIDByPostID($pdo, $postId);
 ?>
 
 <!DOCTYPE html>
@@ -97,7 +97,9 @@ function redirectToLink(customLink) {
         <div class="post-info">
             <p class="post-title"> <?php echo findTitleByPostID($pdo, $postId); ?><?php ?></p>
             <!-- <p class="postid">ID number: <?php echo $postId ?><?php ?></p> --> 
-            <p class="username" onclick="redirectToLink('<?php echo "accountviewer.php?userId={$row['$UID']}" ?>')">Post by: <?php echo findUsernameByPostID($pdo, $postId); ?><?php ?></p>
+            <p class="username" onclick="redirectToLink('<?php echo "accountviewer.php?userId={$row['$UID']}" ?>')">
+                <a  href="<?php echo $finalLink?>" target="_blank"><?php echo findLinkByPostID($pdo, $postId); ?></a>
+                Post by: <?php echo findUsernameByPostID($pdo, $postId); ?><?php ?></p>
             <p class="post-description"><?php echo findDescriptionByPostID($pdo, $postId); ?><?php ?></p>
             <p class="post-link">
                 <a class="anchor-link" href="<?php echo $finalLink?>" target="_blank"><?php echo findLinkByPostID($pdo, $postId); ?></a>
