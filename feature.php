@@ -63,7 +63,8 @@ require_once("includes/postviewerutil.php");
                 $imageSrc = './upload/' . $row['PostID'] . "." . $row['FileExt']; // Assuming image_filename column contains the filename
                 // Output the HTML structure for each post
                 ?>
-                <div class="feature-card" onclick="redirectToLink()">
+                <div class="feature-card" onclick="redirectToLink('<?php echo "postviewer.php?postId={$row['PostID']}" ?>')">
+
                     <img class="card-img" src="<?php echo $imageSrc; ?>" alt="post image">
                     <div class="card-info">
                         <h4 class="title-card"><?php echo htmlspecialchars($row['Title']); ?></h4>

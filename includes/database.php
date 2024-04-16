@@ -1,5 +1,5 @@
 <?php
-      $dsn = "mysql:host=localhost;dbname=onlineexperience";
+      $dsn = "mysql:host=localhost;dbname=onlineexperiences";
       $dbusername = "root";
       $dbpass = "";
       $host = "localhost";
