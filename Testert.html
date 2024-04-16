@@ -54,16 +54,15 @@ $username = getUsernameByUID($pdo, $userId);
                     // Output the HTML structure for each post
                     ?>
                     <div class="feature-card">
-                        <img class="card-img" src="<?php echo $imageSrc; ?>" alt="post image">
+                        <figure class="img-wrapper">
+                            <img class="card-img" src="<?php echo $imageSrc; ?>" alt="post image">
+                        </figure>
                         <div class="card-info">
                             <h4 class="title-card"><?php echo htmlspecialchars($row['Title']); ?></h4>
                             <div class="player_num">Player(s): 1 </div>
                             <!-- <div class="player_num">Player: <?php echo $playerNum; ?></div> -->
                             <div class="weblink">
                             <a href="<?php echo fix_link($row['Link']); ?>" class="webanchor">Link to game</a>
-                            </div>
-                            <div class="weblink">
-                                <a href="<?php echo "postviewer.php?postId={$row['PostID']}" ?>" class="webanchor">View Experience</a>
                             </div>
                         </div>
                     </div>
@@ -92,16 +91,15 @@ $username = getUsernameByUID($pdo, $userId);
                     // Output the HTML structure for each post
                     ?>
                     <div class="feature-card">
-                        <img class="card-img" src="<?php echo $imageSrc; ?>" alt="post image">
+                        <figure class="img-wrapper">
+                            <img class="card-img" src="<?php echo $imageSrc; ?>" alt="post image">
+                        </figure>
                         <div class="card-info">
                             <h4 class="title-card"><?php echo htmlspecialchars($row['Title']); ?></h4>
                             <div class="player_num">Player(s): 1 </div>
                             <!-- <div class="player_num">Player: <?php echo $playerNum; ?></div> -->
                             <div class="weblink">
                             <a href="<?php echo fix_link($row['Link']); ?>" class="webanchor">Link to game</a>
-                            </div>
-                            <div class="weblink">
-                                <a href="<?php echo "postviewer.php?postId={$row['PostID']}" ?>" class="webanchor">View Experience</a>
                             </div>
                         </div>
                     </div>
