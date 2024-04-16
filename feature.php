@@ -48,7 +48,7 @@ require_once("includes/postviewerutil.php");
         </ul>
     </nav>
     <div class="feature">
-        <h1 class="title feature-title">Feature Experience</h1>
+        <h1 class="title feature-title">Featured Experiences</h1>
         <div class="feature-lists">
             <?php
             // Assuming you have a database connection named $pdo
