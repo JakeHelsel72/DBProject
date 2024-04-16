@@ -6,6 +6,7 @@ require_once("includes/postviewerutil.php");
 $postId = $_GET['postId'];
 $title = findTitleByPostID($pdo, $postId);
 $username = findUsernameByPostID($pdo, $postId); // this is posting user
+$UID = findUIDByPostID($pdo, $postId);
 $description = findDescriptionByPostID($pdo, $postId);
 $link = findLinkByPostID($pdo, $postId);
 $link = fix_link($link); // adds http:// or https://
@@ -85,10 +86,10 @@ function submitLikeForm() {
     <div class="mainpost-wrapper">
         <img src="./upload/<?php echo $postId .".". findFileExtensionByPostID($pdo, $postId); ?>" alt="FILL IN" class="post-img">
         <div class="post-info">
-            <p class="post-title"> <?php echo findTitleByPostID($pdo, $postId); ?><?php ?></p>
+            <p class="post-title"> <?php echo $title ?><?php ?></p>
             <!-- <p class="postid">ID number: <?php echo $postId ?><?php ?></p> --> 
-            <p class="username">Post by: <?php echo findUsernameByPostID($pdo, $postId); ?><?php ?></p>
-            <p class="post-description"><?php echo findDescriptionByPostID($pdo, $postId); ?><?php ?></p>
+            <a class="username" href="accountviewer.php?userId=<?php echo $UID ?><?php ?>">Post by: <?php echo $username ?><?php ?></a>
+            <p class="post-description"><?php echo $description ?><?php ?></p>
             <p class="post-link">
                 <a class="anchor-link" href="<?php echo $finalLink?>" target="_blank"><?php echo findLinkByPostID($pdo, $postId); ?></a>
             </p>

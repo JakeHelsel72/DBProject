@@ -75,6 +75,24 @@ function findLinkByPostID(object $pdo, int $postId): ?string {
         return null;
     }
 }
+function findUIDByPostID(object $pdo, int $postId): ?int {
+    $query = "SELECT UID FROM post WHERE PostID = :postid;";
+    $stmt = $pdo->prepare($query); // Prevent SQL injection
+    $stmt->bindParam(":postid", $postId);
+    $stmt->execute();
+
+    // Fetch the result as an associative array
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Check if a result was found
+    if ($result !== false && isset($result['UID'])) {
+        // Extract and return the file extension value
+        return $result['UID'];
+    } else {
+        // Return null if no result or invalid result
+        return null;
+    }
+}
 
 function findUsernameByPostID(object $pdo, int $postId): ?string {
     $query = "
