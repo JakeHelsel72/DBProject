@@ -16,6 +16,7 @@ $currentpage = end($parts);
 $UID = findUIDByPostID($pdo, $postId);
 ?>
 
+html
 <!DOCTYPE html>
 <script>
   function toggleLike() {
@@ -98,6 +99,19 @@ function redirectToLink(customLink) {
                 <?php echo $_SESSION["user_username"];  ?>
               </a>
             <?php } ?>
+
+            <!-- DropBar -->
+          
+              <li class="top">
+                <a  class="link" href="#">Username <i class="fa-solid fa-arrow-down"></i></a>
+                <ul class="dropdown-box">
+                  <li class=""><a href="#">Favorite</a></li>
+                  <li class=""><a href="#">Personal Page</a></li>
+                  <li class=""><a href="#">Logout</a></li>
+                </ul>
+              </li>
+          
+        
         </ul>
     </nav>
   <?php
