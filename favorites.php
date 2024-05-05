@@ -3,7 +3,7 @@ require_once("includes/database.php");
 require_once("includes/config_session.php");
 $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI']; // return url for if someone signs in, they can come back to this page
 require_once("includes/accountviewerutil.php");
-$userId = $_GET['userId'];
+$userId = $_SESSION["user_id"];
 $username = getUsernameByUID($pdo, $userId);
 ?>
 
@@ -95,9 +95,6 @@ $username = getUsernameByUID($pdo, $userId);
                 Sign In
             </a>
             <?php } else { ?>
-                <li class="link link__hover-effect">
-              <a href="favorites.php">Favorites</a>
-            </li> 
               <a href="index.php" class="link btn">
                 <?php echo $_SESSION["user_username"];  ?>
               </a>
@@ -105,22 +102,22 @@ $username = getUsernameByUID($pdo, $userId);
         </ul>
     </nav>
     <div class="Profile">
-        <h3 class="user-title"><?php echo $username ?>'s Profile</h3>
-        <!-- <?php echo "User ID: " . $userId . ", Session User ID: " . $_SESSION["user_id"]; ?> -->
-        <?php if (isset($_SESSION["user_id"]) && isset($userId) && $userId != $_SESSION["user_id"]) { ?>
-        <div class="follow-btn" onclick="follow(this); submitFollowForm();">Follow</div> 
-        <?php } ?>
+        <h3 class="user-title">Your Favorites</h3>
     </div>
   <?php
   if (isset($userId)) { ?>
         <div class="user-post row">
-            <h1 class="title">Post</h1>
+            <h1 class="title">Following</h1>
             <div class="feature-lists">
                 <?php
                 // Assuming you have a database connection named $pdo
     
                 // Query to fetch all user's posts
-                $query = "SELECT * FROM post WHERE UID = :UID";
+                $query = "SELECT DISTINCT *
+                FROM post p
+                WHERE p.UID IN (SELECT FollowedUID
+                                FROM followers
+                                WHERE FollowingUID = :UID);";
                 $stmt = $pdo->prepare($query); // Prevent SQL injection
                 $stmt->bindParam(":UID", $userId);
                 $stmt->execute();
@@ -157,7 +154,7 @@ $username = getUsernameByUID($pdo, $userId);
                 // Assuming you have a database connection named $pdo
     
                 // Query to fetch all user's posts
-                $query = "SELECT DISTINCT PostID, FileExt, Title, Link FROM post p JOIN likes l WHERE l.UID = :UID";
+                $query = "SELECT DISTINCT PostID, FileExt, Title, Link FROM post p JOIN likes l WHERE p.UID = :UID";
                 $stmt = $pdo->prepare($query); // Prevent SQL injection
                 $stmt->bindParam(":UID", $userId);
                 $stmt->execute();

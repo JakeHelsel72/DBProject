@@ -99,6 +99,9 @@ require_once("includes/login_view.php");
         <h1 class="title">Logout</h1>
         <button type="submit" class="btn">Logout</button>
       </form>
+      <!-- <form action="accountviewer.php?userId=<?php echo $_SESSION['user_id']?>" method="get">
+        <button type="submit" class="btn">Account Viewer</button>
+      </form> -->
     </div>
   <?php } ?>
 </body>

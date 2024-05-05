@@ -12,7 +12,7 @@ $finalLink = fix_link($link); // adds http:// or https://
 $parts = explode('/', trim($_SERVER['PHP_SELF'], '/'));
 $baseDir = implode('/', array_slice($parts, 0, -1)); // Assuming the base directory is the first segment
 $currentpage = end($parts);
-$indexurl = "http://$_SERVER[HTTP_HOST]/{$baseDir}/index.php";
+//$indexurl = "http://$_SERVER[HTTP_HOST]/{$baseDir}/index.php";
 $UID = findUIDByPostID($pdo, $postId);
 ?>
 
@@ -111,7 +111,7 @@ function redirectToLink(customLink) {
             <p class="post-title"> <?php echo findTitleByPostID($pdo, $postId); ?><?php ?></p>
             <!-- <p class="postid">ID number: <?php echo $postId ?><?php ?></p> --> 
             <p class="username">
-            Post by: <span class="userclick" onclick="redirectToLink()">
+            Post by: <span class="userclick" onclick="redirectToLink('<?php echo "accountviewer.php?userId={$UID}"?>'   )">
                 <?php echo findUsernameByPostID($pdo, $postId); ?><?php ?> 
                     </span>
             </p>
