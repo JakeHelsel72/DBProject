@@ -207,3 +207,65 @@ p{
     background-color: white;
     
 }
+
+
+
+/*
+
+DROPDOWN
+
+*/
+
+
+/* Dropdown Box Styles */
+nav ul {
+    display: flex;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    display: block;
+    text-decoration: none;
+    color: white;
+}
+
+/* Dropdown Box Styles */
+.dropdown-box {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: white;
+    z-index: 1;
+}
+
+.dropdown-box li {
+    width: 100%;
+}
+
+.dropdown-box a {
+    display: block;
+    padding: 10px 20px;
+    color: black;
+    background-color: white;
+    font-weight: bold;
+    transition: all 200ms ease-in-out;
+}
+
+
+/* Show dropdown on hover */
+.top:hover .dropdown-box {
+    display: block;
+}
+
+.top{
+    transition: all 200ms ease-in-out;
+}
+
+.dropdown-box a:hover{
+    background-color: #E1F7F5;
+}
