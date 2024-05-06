@@ -98,6 +98,9 @@ require_once("includes/login_view.php");
       <form action="includes/logout.php" method="post">
         <h1 class="title">Logout</h1>
         <button type="submit" class="btn">Logout</button>
+        <a href="favorites.php" class="btn">Your Favorites</a> <br><br>
+        <a href="accountviewer.php?userId=<?php echo $_SESSION["user_id"];?>" class="btn">Account</a>
+
       </form>
       <!-- <form action="accountviewer.php?userId=<?php echo $_SESSION['user_id']?>" method="get">
         <button type="submit" class="btn">Account Viewer</button>

@@ -93,10 +93,13 @@ function redirectToLink(customLink) {
                 Sign In
             </a>
             <?php } else { ?>
-              <!-- <li class="link link__hover-effect">
-              <a href="accountviewer.php?userId=<?php echo $_SESSION["user_id"];?>">Favorites</a>
-            </li>  -->
+              <li class="link link__hover-effect">
+              <a href="favorites.php">Favorites</a>
+            </li> 
               <a href="index.php" class="link btn">
+                <?php echo $_SESSION["user_username"];  ?>
+              </a>
+              <!-- <a href="index.php" class="link btn">
                 <li class="top">
                   <a  class="link" href="#"><?php echo $_SESSION["user_username"];  ?> <i class="fa-solid fa-arrow-down"></i></a>
                   <ul class="dropdown-box">
@@ -106,7 +109,7 @@ function redirectToLink(customLink) {
                   </ul>
                 </li>
                 
-              </a>
+              </a> -->
             <?php } ?>
 
             <!-- DropBar -->
