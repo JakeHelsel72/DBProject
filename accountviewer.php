@@ -7,7 +7,7 @@ $userId = $_GET['userId'];
 $username = getUsernameByUID($pdo, $userId);
 if (isset($_SESSION['user_id'])){
     $followed = followed($pdo, $_SESSION['user_id'], $userId);
- } // might have to check to ensure session var exists
+ } 
 ?>
 
 <!DOCTYPE html>

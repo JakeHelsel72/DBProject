@@ -140,4 +140,16 @@ function fix_link(string $link) {
     }
 }
 
+function liked(object $pdo, int $postId, int $userId){
+    // Check if the userId postId pair already exists in the 'likes' table
+    $query = "SELECT * FROM likes WHERE UID = :UID AND PID = :PID";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':UID', $userId, PDO::PARAM_INT);
+    $stmt->bindParam(':PID', $postId, PDO::PARAM_INT);
+    $stmt->execute();
 
+    // Fetch the result
+    $existingLike = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    return ($existingLike) ? true : false;
+}

@@ -14,9 +14,10 @@ $baseDir = implode('/', array_slice($parts, 0, -1)); // Assuming the base direct
 $currentpage = end($parts);
 //$indexurl = "http://$_SERVER[HTTP_HOST]/{$baseDir}/index.php";
 $UID = findUIDByPostID($pdo, $postId);
+if (isset($_SESSION['user_id'])){
+  $liked = liked($pdo, $postId, $_SESSION['user_id']);
+} 
 ?>
-
-html
 <!DOCTYPE html>
 <script>
   function toggleLike() {
@@ -139,7 +140,7 @@ function redirectToLink(customLink) {
             <form id="likeForm" action="like.php" method="POST">
                 <input type="hidden" name="userId" value="<?php echo isset($_SESSION['user_id']) ? $_SESSION['user_id'] : ''; ?>">
                 <input type="hidden" name="postId" value="<?php echo $postId; ?>">
-                <i  id="likeButton" onclick="submitLikeForm();toggleLike()" class="fa-regular fa-heart"></i>
+                <i  id="likeButton" onclick="submitLikeForm();toggleLike()" class="<?php if (isset($_SESSION['user_id']) && $liked) { echo "fa-solid";} else { echo "fa-regular";}?> fa-heart"></i>
             </form>
 
             <?php } else { ?>
