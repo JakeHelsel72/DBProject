@@ -37,3 +37,17 @@ function fix_link(string $link) {
         return $finalLink;
     }
 }
+
+function followed(object $pdo, int $currentUserId, int $otherUserId){
+    // Check if the userId pair already exists in the 'following' table
+    $query = "SELECT FollowingUID FROM followers WHERE FollowingUID = :CUID AND FollowedUID = :OUID";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':CUID', $currentUserId, PDO::PARAM_INT);
+    $stmt->bindParam(':OUID', $otherUserId, PDO::PARAM_INT);
+    $stmt->execute();
+
+    // Fetch the result
+    $existingFollow = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    return ($existingFollow) ? true : false;
+}

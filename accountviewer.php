@@ -5,6 +5,9 @@ $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI']; // return url for if someon
 require_once("includes/accountviewerutil.php");
 $userId = $_GET['userId'];
 $username = getUsernameByUID($pdo, $userId);
+if (isset($_SESSION['user_id'])){
+    $followed = followed($pdo, $_SESSION['user_id'], $userId);
+ } // might have to check to ensure session var exists
 ?>
 
 <!DOCTYPE html>
@@ -17,19 +20,6 @@ $username = getUsernameByUID($pdo, $userId);
     <link rel="stylesheet" href="acountviewer.css">
     <script src="https://kit.fontawesome.com/6443be5758.js" crossorigin="anonymous"></script>
     <script>
-        function toggleLike() {
-            var likeIcon = document.getElementById('likeButton');
-
-            // Toggle between 'full-heart' and 'empty-heart' classes
-            if (likeIcon.classList.contains('fa-regular')) {
-                likeIcon.classList.remove('fa-regular');
-                likeIcon.classList.add('fa-solid');
-            } else {
-                likeIcon.classList.remove('fa-solid');
-                likeIcon.classList.add('fa-regular');
-            }
-        }
-
         function submitFollowForm() {
             var followingUserId = <?php echo isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 'null'; ?>;
             var followedUserId = <?php echo isset($userId) ? $userId : 'null'; ?>;
@@ -47,14 +37,14 @@ $username = getUsernameByUID($pdo, $userId);
             xhr.onload = function() {
                 if (xhr.status >= 200 && xhr.status < 300) {
                     // Request was successful
-                    console.log('Like action succeeded:', xhr.responseText);
+                    console.log('follow action succeeded:', xhr.responseText);
                     // Handle response here (optional)
                 } else {
                     // Request failed
-                    console.error('Like action failed:', xhr.statusText);
+                    console.error('follow action failed:', xhr.statusText);
                     // Handle error here (optional)
                 }
-            };
+            }
 
             // Send the form data asynchronously
             xhr.send(formData);
@@ -108,7 +98,7 @@ $username = getUsernameByUID($pdo, $userId);
         <h3 class="user-title"><?php echo $username ?>'s Profile</h3>
         <!-- <?php echo "User ID: " . $userId . ", Session User ID: " . $_SESSION["user_id"]; ?> -->
         <?php if (isset($_SESSION["user_id"]) && isset($userId) && $userId != $_SESSION["user_id"]) { ?>
-        <div class="follow-btn" onclick="follow(this); submitFollowForm();">Follow</div> 
+        <div class="follow-btn" onclick="follow(this); submitFollowForm();"><?php if (isset($_SESSION['user_id']) && $followed) { echo "Followed";} else { echo "Follow";}?></div> 
         <?php } ?>
     </div>
   <?php
