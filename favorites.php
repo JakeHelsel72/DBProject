@@ -17,48 +17,6 @@ $username = getUsernameByUID($pdo, $userId);
     <link rel="stylesheet" href="acountviewer.css">
     <script src="https://kit.fontawesome.com/6443be5758.js" crossorigin="anonymous"></script>
     <script>
-        function toggleLike() {
-            var likeIcon = document.getElementById('likeButton');
-
-            // Toggle between 'full-heart' and 'empty-heart' classes
-            if (likeIcon.classList.contains('fa-regular')) {
-                likeIcon.classList.remove('fa-regular');
-                likeIcon.classList.add('fa-solid');
-            } else {
-                likeIcon.classList.remove('fa-solid');
-                likeIcon.classList.add('fa-regular');
-            }
-        }
-
-        function submitFollowForm() {
-            var followingUserId = <?php echo isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 'null'; ?>;
-            var followedUserId = <?php echo isset($userId) ? $userId : 'null'; ?>;
-            // Create a new FormData object
-            var formData = new FormData();
-
-            // Append data to FormData object
-            formData.append('followingUserId', followingUserId);
-            formData.append('followedUserId', followedUserId);
-            var xhr = new XMLHttpRequest();
-
-            xhr.open('POST', 'follow.php', true);
-
-            // Set up event listener for when the request completes
-            xhr.onload = function() {
-                if (xhr.status >= 200 && xhr.status < 300) {
-                    // Request was successful
-                    console.log('Like action succeeded:', xhr.responseText);
-                    // Handle response here (optional)
-                } else {
-                    // Request failed
-                    console.error('Like action failed:', xhr.statusText);
-                    // Handle error here (optional)
-                }
-            };
-
-            // Send the form data asynchronously
-            xhr.send(formData);
-        }
 
         function redirectToLink(customLink) {
             // Specify the URL you want to redirect to
@@ -154,7 +112,9 @@ $username = getUsernameByUID($pdo, $userId);
                 // Assuming you have a database connection named $pdo
     
                 // Query to fetch all user's posts
-                $query = "SELECT DISTINCT PostID, FileExt, Title, Link FROM post p JOIN likes l WHERE p.UID = :UID";
+                $query = "SELECT DISTINCT PostID, FileExt, Title, Link FROM post p
+                JOIN likes l ON p.PostID = l.PID
+                WHERE l.UID = :UID;";
                 $stmt = $pdo->prepare($query); // Prevent SQL injection
                 $stmt->bindParam(":UID", $userId);
                 $stmt->execute();

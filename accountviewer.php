@@ -147,7 +147,9 @@ if (isset($_SESSION['user_id'])){
                 // Assuming you have a database connection named $pdo
     
                 // Query to fetch all user's posts
-                $query = "SELECT DISTINCT PostID, FileExt, Title, Link FROM post p JOIN likes l WHERE l.UID = :UID";
+                $query = "SELECT DISTINCT PostID, FileExt, Title, Link FROM post p
+                JOIN likes l ON p.PostID = l.PID
+                WHERE l.UID = :UID;";
                 $stmt = $pdo->prepare($query); // Prevent SQL injection
                 $stmt->bindParam(":UID", $userId);
                 $stmt->execute();
