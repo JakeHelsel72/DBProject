@@ -93,24 +93,25 @@ function redirectToLink(customLink) {
                 Sign In
             </a>
             <?php } else { ?>
-              <li class="link link__hover-effect">
+              <!-- <li class="link link__hover-effect">
               <a href="accountviewer.php?userId=<?php echo $_SESSION["user_id"];?>">Favorites</a>
-            </li> 
+            </li>  -->
               <a href="index.php" class="link btn">
-                <?php echo $_SESSION["user_username"];  ?>
+                <li class="top">
+                  <a  class="link" href="#"><?php echo $_SESSION["user_username"];  ?> <i class="fa-solid fa-arrow-down"></i></a>
+                  <ul class="dropdown-box">
+                    <li class=""><a href="favorites.php">Favorite</a></li>
+                    <li class=""><a href="accountviewer.php?userId=<?php echo $_SESSION["user_id"];?>">Personal Page</a></li>
+                    <li class=""><a href="index.php">Logout</a></li>
+                  </ul>
+                </li>
+                
               </a>
             <?php } ?>
 
             <!-- DropBar -->
           
-              <li class="top">
-                <a  class="link" href="#">Username <i class="fa-solid fa-arrow-down"></i></a>
-                <ul class="dropdown-box">
-                  <li class=""><a href="#">Favorite</a></li>
-                  <li class=""><a href="#">Personal Page</a></li>
-                  <li class=""><a href="#">Logout</a></li>
-                </ul>
-              </li>
+              
           
         
         </ul>

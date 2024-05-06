@@ -130,7 +130,7 @@ if (isset($_SESSION['user_id'])){
                         </figure>
                         <div class="card-info">
                             <h4 class="title-card"><?php echo htmlspecialchars($row['Title']); ?></h4>
-                            <div class="player_num">Player(s): 1 </div>
+                            <!-- <div class="player_num">Player(s): 1 </div> -->
                             <!-- <div class="player_num">Player: <?php echo $playerNum; ?></div> -->
                             <div class="weblink">
                             <a href="<?php echo fix_link($row['Link']); ?>" class="webanchor">Link to game</a>
@@ -169,7 +169,7 @@ if (isset($_SESSION['user_id'])){
                         </figure>
                         <div class="card-info">
                             <h4 class="title-card"><?php echo htmlspecialchars($row['Title']); ?></h4>
-                            <div class="player_num">Player(s): 1 </div>
+                            <!-- <div class="player_num">Player(s): 1 </div> -->
                             <!-- <div class="player_num">Player: <?php echo $playerNum; ?></div> -->
                             <div class="weblink">
                             <a href="<?php echo fix_link($row['Link']); ?>" class="webanchor">Link to game</a>
